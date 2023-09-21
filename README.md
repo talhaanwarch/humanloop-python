@@ -1,6 +1,6 @@
 # humanloop
 
-[![PyPI](https://img.shields.io/badge/PyPI-v0.5.13-blue)](https://pypi.org/project/humanloop/0.5.13)
+[![PyPI](https://img.shields.io/badge/PyPI-v0.5.14-blue)](https://pypi.org/project/humanloop/0.5.14)
 
 
 
@@ -11,7 +11,7 @@ Python >=3.7
 ## Installing
 
 ```sh
-pip install humanloop==0.5.13
+pip install humanloop==0.5.14
 ```
 
 ## Getting Started
@@ -70,6 +70,7 @@ except ApiException as e:
     pprint(e.status)
     pprint(e.reason)
     pprint(e.round_trip_time)
+
 try:
     # Complete
     complete_response = humanloop.complete(
@@ -101,6 +102,7 @@ except ApiException as e:
     pprint(e.status)
     pprint(e.reason)
     pprint(e.round_trip_time)
+
 try:
     # Feedback
     feedback_response = humanloop.feedback(
@@ -122,6 +124,7 @@ except ApiException as e:
     pprint(e.status)
     pprint(e.reason)
     pprint(e.round_trip_time)
+
 try:
     # Log
     log_response = humanloop.log(

@@ -12,7 +12,7 @@
 from setuptools import setup, find_packages  # noqa: H301
 
 NAME = "humanloop"
-VERSION = "0.5.13"
+VERSION = "0.5.14"
 # To install the library, run the following
 #
 # python setup.py install
@@ -39,7 +39,7 @@ setup(
     description="Humanloop API",
     author="Konfig",
     author_email="engineering@konfigthis.com",
-    url="https://github.com/konfig-dev/humanloop-sdks/tree/main/v4/python",
+    url="https://github.com/humanloop/humanloop-python",
     keywords=["Konfig", "Humanloop API"],
     license="MIT",
     python_requires=">=3.7",
