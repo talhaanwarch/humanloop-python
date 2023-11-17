@@ -198,10 +198,11 @@ class BaseApi(api_client.Api):
         self,
         body: typing.Any = None,
         skip_deserialization: bool = True,
-        timeout: typing.Optional[typing.Union[int, typing.Tuple]] = None,
+        timeout: typing.Optional[typing.Union[float, typing.Tuple]] = None,
         accept_content_types: typing.Tuple[str] = _all_accept_content_types,
         content_type: str = 'application/json',
         stream: bool = False,
+        **kwargs,
     ) -> typing.Union[
         ApiResponseFor201Async,
         api_client.ApiResponseWithoutDeserializationAsync,
@@ -251,6 +252,7 @@ class BaseApi(api_client.Api):
             body=body,
             auth_settings=_auth,
             timeout=timeout,
+            **kwargs
         )
     
         if stream:
@@ -311,7 +313,7 @@ class BaseApi(api_client.Api):
         self,
         body: typing.Any = None,
         skip_deserialization: bool = True,
-        timeout: typing.Optional[typing.Union[int, typing.Tuple]] = None,
+        timeout: typing.Optional[typing.Union[float, typing.Tuple]] = None,
         accept_content_types: typing.Tuple[str] = _all_accept_content_types,
         content_type: str = 'application/json',
         stream: bool = False,
@@ -397,6 +399,7 @@ class CreateRaw(BaseApi):
         name: str,
         feedback_types: typing.Optional[typing.List[FeedbackTypeRequest]] = None,
         directory_id: typing.Optional[str] = None,
+        **kwargs,
     ) -> typing.Union[
         ApiResponseFor201Async,
         api_client.ApiResponseWithoutDeserializationAsync,
@@ -409,6 +412,7 @@ class CreateRaw(BaseApi):
         )
         return await self._acreate_oapg(
             body=args.body,
+            **kwargs,
         )
     
     def create(
@@ -437,11 +441,13 @@ class Create(BaseApi):
         feedback_types: typing.Optional[typing.List[FeedbackTypeRequest]] = None,
         directory_id: typing.Optional[str] = None,
         validate: bool = False,
+        **kwargs,
     ):
         raw_response = await self.raw.acreate(
             name=name,
             feedback_types=feedback_types,
             directory_id=directory_id,
+            **kwargs,
         )
         if validate:
             return ProjectResponsePydantic(**raw_response.body)
@@ -473,6 +479,7 @@ class ApiForpost(BaseApi):
         name: str,
         feedback_types: typing.Optional[typing.List[FeedbackTypeRequest]] = None,
         directory_id: typing.Optional[str] = None,
+        **kwargs,
     ) -> typing.Union[
         ApiResponseFor201Async,
         api_client.ApiResponseWithoutDeserializationAsync,
@@ -485,6 +492,7 @@ class ApiForpost(BaseApi):
         )
         return await self._acreate_oapg(
             body=args.body,
+            **kwargs,
         )
     
     def post(

@@ -152,9 +152,10 @@ class BaseApi(api_client.Api):
         self,
             query_params: typing.Optional[dict] = {},
         skip_deserialization: bool = True,
-        timeout: typing.Optional[typing.Union[int, typing.Tuple]] = None,
+        timeout: typing.Optional[typing.Union[float, typing.Tuple]] = None,
         accept_content_types: typing.Tuple[str] = _all_accept_content_types,
         stream: bool = False,
+        **kwargs,
     ) -> typing.Union[
         ApiResponseFor204Async,
         api_client.ApiResponseWithoutDeserializationAsync,
@@ -203,6 +204,7 @@ class BaseApi(api_client.Api):
             auth_settings=_auth,
             prefix_separator_iterator=prefix_separator_iterator,
             timeout=timeout,
+            **kwargs
         )
     
         if stream:
@@ -263,7 +265,7 @@ class BaseApi(api_client.Api):
         self,
             query_params: typing.Optional[dict] = {},
         skip_deserialization: bool = True,
-        timeout: typing.Optional[typing.Union[int, typing.Tuple]] = None,
+        timeout: typing.Optional[typing.Union[float, typing.Tuple]] = None,
         accept_content_types: typing.Tuple[str] = _all_accept_content_types,
         stream: bool = False,
     ) -> typing.Union[
@@ -345,6 +347,7 @@ class DeleteRaw(BaseApi):
     async def adelete(
         self,
         id: typing.Optional[typing.List[str]] = None,
+        **kwargs,
     ) -> typing.Union[
         ApiResponseFor204Async,
         api_client.ApiResponseWithoutDeserializationAsync,
@@ -355,6 +358,7 @@ class DeleteRaw(BaseApi):
         )
         return await self._adelete_oapg(
             query_params=args.query,
+            **kwargs,
         )
     
     def delete(
@@ -377,9 +381,11 @@ class Delete(BaseApi):
         self,
         id: typing.Optional[typing.List[str]] = None,
         validate: bool = False,
+        **kwargs,
     ):
         raw_response = await self.raw.adelete(
             id=id,
+            **kwargs,
         )
     
     
@@ -399,6 +405,7 @@ class ApiFordelete(BaseApi):
     async def adelete(
         self,
         id: typing.Optional[typing.List[str]] = None,
+        **kwargs,
     ) -> typing.Union[
         ApiResponseFor204Async,
         api_client.ApiResponseWithoutDeserializationAsync,
@@ -409,6 +416,7 @@ class ApiFordelete(BaseApi):
         )
         return await self._adelete_oapg(
             query_params=args.query,
+            **kwargs,
         )
     
     def delete(

@@ -215,9 +215,10 @@ class BaseApi(api_client.Api):
             query_params: typing.Optional[dict] = {},
             path_params: typing.Optional[dict] = {},
         skip_deserialization: bool = True,
-        timeout: typing.Optional[typing.Union[int, typing.Tuple]] = None,
+        timeout: typing.Optional[typing.Union[float, typing.Tuple]] = None,
         accept_content_types: typing.Tuple[str] = _all_accept_content_types,
         stream: bool = False,
+        **kwargs,
     ) -> typing.Union[
         ApiResponseFor200Async,
         api_client.ApiResponseWithoutDeserializationAsync,
@@ -280,6 +281,7 @@ class BaseApi(api_client.Api):
             auth_settings=_auth,
             prefix_separator_iterator=prefix_separator_iterator,
             timeout=timeout,
+            **kwargs
         )
     
         if stream:
@@ -341,7 +343,7 @@ class BaseApi(api_client.Api):
             query_params: typing.Optional[dict] = {},
             path_params: typing.Optional[dict] = {},
         skip_deserialization: bool = True,
-        timeout: typing.Optional[typing.Union[int, typing.Tuple]] = None,
+        timeout: typing.Optional[typing.Union[float, typing.Tuple]] = None,
         accept_content_types: typing.Tuple[str] = _all_accept_content_types,
         stream: bool = False,
     ) -> typing.Union[
@@ -438,6 +440,7 @@ class DeactivateConfigRaw(BaseApi):
         self,
         id: str,
         environment: typing.Optional[str] = None,
+        **kwargs,
     ) -> typing.Union[
         ApiResponseFor200Async,
         api_client.ApiResponseWithoutDeserializationAsync,
@@ -450,6 +453,7 @@ class DeactivateConfigRaw(BaseApi):
         return await self._adeactivate_config_oapg(
             query_params=args.query,
             path_params=args.path,
+            **kwargs,
         )
     
     def deactivate_config(
@@ -476,10 +480,12 @@ class DeactivateConfig(BaseApi):
         id: str,
         environment: typing.Optional[str] = None,
         validate: bool = False,
+        **kwargs,
     ):
         raw_response = await self.raw.adeactivate_config(
             id=id,
             environment=environment,
+            **kwargs,
         )
         if validate:
             return ProjectResponsePydantic(**raw_response.body)
@@ -508,6 +514,7 @@ class ApiFordelete(BaseApi):
         self,
         id: str,
         environment: typing.Optional[str] = None,
+        **kwargs,
     ) -> typing.Union[
         ApiResponseFor200Async,
         api_client.ApiResponseWithoutDeserializationAsync,
@@ -520,6 +527,7 @@ class ApiFordelete(BaseApi):
         return await self._adeactivate_config_oapg(
             query_params=args.query,
             path_params=args.path,
+            **kwargs,
         )
     
     def delete(

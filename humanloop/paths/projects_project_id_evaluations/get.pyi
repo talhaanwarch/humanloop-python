@@ -170,9 +170,10 @@ class BaseApi(api_client.Api):
             query_params: typing.Optional[dict] = {},
             path_params: typing.Optional[dict] = {},
         skip_deserialization: bool = True,
-        timeout: typing.Optional[typing.Union[int, typing.Tuple]] = None,
+        timeout: typing.Optional[typing.Union[float, typing.Tuple]] = None,
         accept_content_types: typing.Tuple[str] = _all_accept_content_types,
         stream: bool = False,
+        **kwargs,
     ) -> typing.Union[
         ApiResponseFor200Async,
         api_client.ApiResponseWithoutDeserializationAsync,
@@ -235,6 +236,7 @@ class BaseApi(api_client.Api):
             auth_settings=_auth,
             prefix_separator_iterator=prefix_separator_iterator,
             timeout=timeout,
+            **kwargs
         )
     
         if stream:
@@ -296,7 +298,7 @@ class BaseApi(api_client.Api):
             query_params: typing.Optional[dict] = {},
             path_params: typing.Optional[dict] = {},
         skip_deserialization: bool = True,
-        timeout: typing.Optional[typing.Union[int, typing.Tuple]] = None,
+        timeout: typing.Optional[typing.Union[float, typing.Tuple]] = None,
         accept_content_types: typing.Tuple[str] = _all_accept_content_types,
         stream: bool = False,
     ) -> typing.Union[
@@ -393,6 +395,7 @@ class ListAllForProjectRaw(BaseApi):
         self,
         project_id: str,
         evaluator_aggregates: typing.Optional[bool] = None,
+        **kwargs,
     ) -> typing.Union[
         ApiResponseFor200Async,
         api_client.ApiResponseWithoutDeserializationAsync,
@@ -405,6 +408,7 @@ class ListAllForProjectRaw(BaseApi):
         return await self._alist_all_for_project_oapg(
             query_params=args.query,
             path_params=args.path,
+            **kwargs,
         )
     
     def list_all_for_project(
@@ -431,10 +435,12 @@ class ListAllForProject(BaseApi):
         project_id: str,
         evaluator_aggregates: typing.Optional[bool] = None,
         validate: bool = False,
+        **kwargs,
     ):
         raw_response = await self.raw.alist_all_for_project(
             project_id=project_id,
             evaluator_aggregates=evaluator_aggregates,
+            **kwargs,
         )
         if validate:
             return RootModel[EvaluationsGetForProjectResponsePydantic](raw_response.body).root
@@ -463,6 +469,7 @@ class ApiForget(BaseApi):
         self,
         project_id: str,
         evaluator_aggregates: typing.Optional[bool] = None,
+        **kwargs,
     ) -> typing.Union[
         ApiResponseFor200Async,
         api_client.ApiResponseWithoutDeserializationAsync,
@@ -475,6 +482,7 @@ class ApiForget(BaseApi):
         return await self._alist_all_for_project_oapg(
             query_params=args.query,
             path_params=args.path,
+            **kwargs,
         )
     
     def get(

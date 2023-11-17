@@ -153,10 +153,11 @@ class BaseApi(api_client.Api):
         self,
         body: typing.Any = None,
         skip_deserialization: bool = True,
-        timeout: typing.Optional[typing.Union[int, typing.Tuple]] = None,
+        timeout: typing.Optional[typing.Union[float, typing.Tuple]] = None,
         accept_content_types: typing.Tuple[str] = _all_accept_content_types,
         content_type: str = 'application/json',
         stream: bool = False,
+        **kwargs,
     ) -> typing.Union[
         ApiResponseFor201Async,
         api_client.ApiResponseWithoutDeserializationAsync,
@@ -206,6 +207,7 @@ class BaseApi(api_client.Api):
             body=body,
             auth_settings=_auth,
             timeout=timeout,
+            **kwargs
         )
     
         if stream:
@@ -266,7 +268,7 @@ class BaseApi(api_client.Api):
         self,
         body: typing.Any = None,
         skip_deserialization: bool = True,
-        timeout: typing.Optional[typing.Union[int, typing.Tuple]] = None,
+        timeout: typing.Optional[typing.Union[float, typing.Tuple]] = None,
         accept_content_types: typing.Tuple[str] = _all_accept_content_types,
         content_type: str = 'application/json',
         stream: bool = False,
@@ -354,6 +356,7 @@ class CreateRaw(BaseApi):
         code: str,
         arguments_type: EvaluatorArgumentsType,
         return_type: EvaluatorReturnTypeEnum,
+        **kwargs,
     ) -> typing.Union[
         ApiResponseFor201Async,
         api_client.ApiResponseWithoutDeserializationAsync,
@@ -368,6 +371,7 @@ class CreateRaw(BaseApi):
         )
         return await self._acreate_oapg(
             body=args.body,
+            **kwargs,
         )
     
     def create(
@@ -402,6 +406,7 @@ class Create(BaseApi):
         arguments_type: EvaluatorArgumentsType,
         return_type: EvaluatorReturnTypeEnum,
         validate: bool = False,
+        **kwargs,
     ):
         raw_response = await self.raw.acreate(
             description=description,
@@ -409,6 +414,7 @@ class Create(BaseApi):
             code=code,
             arguments_type=arguments_type,
             return_type=return_type,
+            **kwargs,
         )
         if validate:
             return EvaluatorResponsePydantic(**raw_response.body)
@@ -446,6 +452,7 @@ class ApiForpost(BaseApi):
         code: str,
         arguments_type: EvaluatorArgumentsType,
         return_type: EvaluatorReturnTypeEnum,
+        **kwargs,
     ) -> typing.Union[
         ApiResponseFor201Async,
         api_client.ApiResponseWithoutDeserializationAsync,
@@ -460,6 +467,7 @@ class ApiForpost(BaseApi):
         )
         return await self._acreate_oapg(
             body=args.body,
+            **kwargs,
         )
     
     def post(

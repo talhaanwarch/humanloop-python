@@ -204,10 +204,11 @@ class BaseApi(api_client.Api):
         self,
         body: typing.Any = None,
         skip_deserialization: bool = True,
-        timeout: typing.Optional[typing.Union[int, typing.Tuple]] = None,
+        timeout: typing.Optional[typing.Union[float, typing.Tuple]] = None,
         accept_content_types: typing.Tuple[str] = _all_accept_content_types,
         content_type: str = 'application/json',
         stream: bool = False,
+        **kwargs,
     ) -> typing.Union[
         ApiResponseFor200Async,
         api_client.ApiResponseWithoutDeserializationAsync,
@@ -257,6 +258,7 @@ class BaseApi(api_client.Api):
             body=body,
             auth_settings=_auth,
             timeout=timeout,
+            **kwargs
         )
     
         if stream:
@@ -317,7 +319,7 @@ class BaseApi(api_client.Api):
         self,
         body: typing.Any = None,
         skip_deserialization: bool = True,
-        timeout: typing.Optional[typing.Union[int, typing.Tuple]] = None,
+        timeout: typing.Optional[typing.Union[float, typing.Tuple]] = None,
         accept_content_types: typing.Tuple[str] = _all_accept_content_types,
         content_type: str = 'application/json',
         stream: bool = False,
@@ -418,6 +420,7 @@ class RegisterRaw(BaseApi):
         chat_template: typing.Optional[typing.List[ChatMessage]] = None,
         endpoint: typing.Optional[ModelEndpoints] = None,
         tools: typing.Optional[typing.List[ModelConfigToolRequest]] = None,
+        **kwargs,
     ) -> typing.Union[
         ApiResponseFor200Async,
         api_client.ApiResponseWithoutDeserializationAsync,
@@ -445,6 +448,7 @@ class RegisterRaw(BaseApi):
         )
         return await self._aregister_oapg(
             body=args.body,
+            **kwargs,
         )
     
     def register(
@@ -518,6 +522,7 @@ class Register(BaseApi):
         endpoint: typing.Optional[ModelEndpoints] = None,
         tools: typing.Optional[typing.List[ModelConfigToolRequest]] = None,
         validate: bool = False,
+        **kwargs,
     ):
         raw_response = await self.raw.aregister(
             model=model,
@@ -538,6 +543,7 @@ class Register(BaseApi):
             chat_template=chat_template,
             endpoint=endpoint,
             tools=tools,
+            **kwargs,
         )
         if validate:
             return ProjectConfigResponsePydantic(**raw_response.body)
@@ -614,6 +620,7 @@ class ApiForpost(BaseApi):
         chat_template: typing.Optional[typing.List[ChatMessage]] = None,
         endpoint: typing.Optional[ModelEndpoints] = None,
         tools: typing.Optional[typing.List[ModelConfigToolRequest]] = None,
+        **kwargs,
     ) -> typing.Union[
         ApiResponseFor200Async,
         api_client.ApiResponseWithoutDeserializationAsync,
@@ -641,6 +648,7 @@ class ApiForpost(BaseApi):
         )
         return await self._aregister_oapg(
             body=args.body,
+            **kwargs,
         )
     
     def post(

@@ -186,10 +186,11 @@ class BaseApi(api_client.Api):
         self,
         body: typing.Any = None,
         skip_deserialization: bool = True,
-        timeout: typing.Optional[typing.Union[int, typing.Tuple]] = None,
+        timeout: typing.Optional[typing.Union[float, typing.Tuple]] = None,
         accept_content_types: typing.Tuple[str] = _all_accept_content_types,
         content_type: str = 'application/json',
         stream: bool = False,
+        **kwargs,
     ) -> typing.Union[
         ApiResponseFor200Async,
         api_client.ApiResponseWithoutDeserializationAsync,
@@ -239,6 +240,7 @@ class BaseApi(api_client.Api):
             body=body,
             auth_settings=_auth,
             timeout=timeout,
+            **kwargs
         )
     
         if stream:
@@ -299,7 +301,7 @@ class BaseApi(api_client.Api):
         self,
         body: typing.Any = None,
         skip_deserialization: bool = True,
-        timeout: typing.Optional[typing.Union[int, typing.Tuple]] = None,
+        timeout: typing.Optional[typing.Union[float, typing.Tuple]] = None,
         accept_content_types: typing.Tuple[str] = _all_accept_content_types,
         content_type: str = 'application/json',
         stream: bool = False,
@@ -398,6 +400,7 @@ class CreateDeployedRaw(BaseApi):
         suffix: typing.Optional[str] = None,
         user: typing.Optional[str] = None,
         environment: typing.Optional[str] = None,
+        **kwargs,
     ) -> typing.Union[
         ApiResponseFor200Async,
         api_client.ApiResponseWithoutDeserializationAsync,
@@ -423,6 +426,7 @@ class CreateDeployedRaw(BaseApi):
         )
         return await self._acreate_deployed_oapg(
             body=args.body,
+            **kwargs,
         )
     
     def create_deployed(
@@ -490,6 +494,7 @@ class CreateDeployed(BaseApi):
         user: typing.Optional[str] = None,
         environment: typing.Optional[str] = None,
         validate: bool = False,
+        **kwargs,
     ):
         raw_response = await self.raw.acreate_deployed(
             project=project,
@@ -508,6 +513,7 @@ class CreateDeployed(BaseApi):
             suffix=suffix,
             user=user,
             environment=environment,
+            **kwargs,
         )
         if validate:
             return CompletionResponsePydantic(**raw_response.body)
@@ -578,6 +584,7 @@ class ApiForpost(BaseApi):
         suffix: typing.Optional[str] = None,
         user: typing.Optional[str] = None,
         environment: typing.Optional[str] = None,
+        **kwargs,
     ) -> typing.Union[
         ApiResponseFor200Async,
         api_client.ApiResponseWithoutDeserializationAsync,
@@ -603,6 +610,7 @@ class ApiForpost(BaseApi):
         )
         return await self._acreate_deployed_oapg(
             body=args.body,
+            **kwargs,
         )
     
     def post(

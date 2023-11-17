@@ -189,6 +189,7 @@ class Humanloop(ClientCustom):
         stream: typing.Optional[bool] = None,
         user: typing.Optional[str] = None,
         tool_call: typing.Optional[typing.Union[str, typing.Dict[str, typing.Union[bool, date, datetime, dict, float, int, list, str, None]]]] = None,
+        **kwargs,
     ):
         return await self.chats.acreate(
             messages=messages,
@@ -207,6 +208,7 @@ class Humanloop(ClientCustom):
             stream=stream,
             user=user,
             tool_call=tool_call,
+            **kwargs,
         )
 
     @copy_signature(ChatsApi.create)
@@ -267,6 +269,7 @@ class Humanloop(ClientCustom):
         user: typing.Optional[str] = None,
         tool_call: typing.Optional[typing.Union[str, typing.Dict[str, typing.Union[bool, date, datetime, dict, float, int, list, str, None]]]] = None,
         environment: typing.Optional[str] = None,
+        **kwargs,
     ):
         return await self.chats.acreate_deployed(
             messages=messages,
@@ -285,6 +288,7 @@ class Humanloop(ClientCustom):
             user=user,
             tool_call=tool_call,
             environment=environment,
+            **kwargs,
         )
 
     @copy_signature(ChatsApi.create_deployed)
@@ -345,6 +349,7 @@ class Humanloop(ClientCustom):
         stream: typing.Optional[bool] = None,
         user: typing.Optional[str] = None,
         tool_call: typing.Optional[typing.Union[str, typing.Dict[str, typing.Union[bool, date, datetime, dict, float, int, list, str, None]]]] = None,
+        **kwargs,
     ):
         return await self.chats.acreate_experiment(
             messages=messages,
@@ -363,6 +368,7 @@ class Humanloop(ClientCustom):
             stream=stream,
             user=user,
             tool_call=tool_call,
+            **kwargs,
         )
 
     @copy_signature(ChatsApi.create_experiment)
@@ -423,6 +429,7 @@ class Humanloop(ClientCustom):
         stream: typing.Optional[bool] = None,
         user: typing.Optional[str] = None,
         tool_call: typing.Optional[typing.Union[str, typing.Dict[str, typing.Union[bool, date, datetime, dict, float, int, list, str, None]]]] = None,
+        **kwargs,
     ):
         return await self.chats.acreate_model_config(
             messages=messages,
@@ -441,6 +448,7 @@ class Humanloop(ClientCustom):
             stream=stream,
             user=user,
             tool_call=tool_call,
+            **kwargs,
         )
 
     @copy_signature(ChatsApi.create_model_config)
@@ -501,6 +509,7 @@ class Humanloop(ClientCustom):
         stream: typing.Optional[bool] = None,
         suffix: typing.Optional[str] = None,
         user: typing.Optional[str] = None,
+        **kwargs,
     ):
         return await self.completions.acreate(
             model_config=model_config,
@@ -519,6 +528,7 @@ class Humanloop(ClientCustom):
             stream=stream,
             suffix=suffix,
             user=user,
+            **kwargs,
         )
 
     @copy_signature(CompletionsApi.create)
@@ -579,6 +589,7 @@ class Humanloop(ClientCustom):
         suffix: typing.Optional[str] = None,
         user: typing.Optional[str] = None,
         environment: typing.Optional[str] = None,
+        **kwargs,
     ):
         return await self.completions.acreate_deployed(
             project=project,
@@ -597,6 +608,7 @@ class Humanloop(ClientCustom):
             suffix=suffix,
             user=user,
             environment=environment,
+            **kwargs,
         )
 
     @copy_signature(CompletionsApi.create_deployed)
@@ -657,6 +669,7 @@ class Humanloop(ClientCustom):
         stream: typing.Optional[bool] = None,
         suffix: typing.Optional[str] = None,
         user: typing.Optional[str] = None,
+        **kwargs,
     ):
         return await self.completions.acreate_experiment(
             experiment_id=experiment_id,
@@ -675,6 +688,7 @@ class Humanloop(ClientCustom):
             stream=stream,
             suffix=suffix,
             user=user,
+            **kwargs,
         )
 
     @copy_signature(CompletionsApi.create_experiment)
@@ -735,6 +749,7 @@ class Humanloop(ClientCustom):
         stream: typing.Optional[bool] = None,
         suffix: typing.Optional[str] = None,
         user: typing.Optional[str] = None,
+        **kwargs,
     ):
         return await self.completions.acreate_model_config(
             model_config_id=model_config_id,
@@ -753,6 +768,7 @@ class Humanloop(ClientCustom):
             stream=stream,
             suffix=suffix,
             user=user,
+            **kwargs,
         )
 
     @copy_signature(CompletionsApi.create_model_config)
@@ -804,6 +820,7 @@ class Humanloop(ClientCustom):
         user: typing.Optional[str] = None,
         created_at: typing.Optional[datetime] = None,
         unset: typing.Optional[bool] = None,
+        **kwargs,
     ):
         return await self.feedback_api.afeedback(
             body=body,
@@ -813,6 +830,7 @@ class Humanloop(ClientCustom):
             user=user,
             created_at=created_at,
             unset=unset,
+            **kwargs,
         )
 
     @copy_signature(FeedbackApi.feedback)
@@ -858,6 +876,7 @@ class Humanloop(ClientCustom):
         created_at: typing.Optional[datetime] = None,
         error: typing.Optional[str] = None,
         duration: typing.Optional[typing.Union[int, float]] = None,
+        **kwargs,
     ):
         return await self.logs.alog(
             body=body,
@@ -879,6 +898,7 @@ class Humanloop(ClientCustom):
             created_at=created_at,
             error=error,
             duration=duration,
+            **kwargs,
         )
 
     @copy_signature(LogsApi.log)

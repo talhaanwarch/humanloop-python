@@ -138,9 +138,10 @@ class BaseApi(api_client.Api):
         self,
             path_params: typing.Optional[dict] = {},
         skip_deserialization: bool = True,
-        timeout: typing.Optional[typing.Union[int, typing.Tuple]] = None,
+        timeout: typing.Optional[typing.Union[float, typing.Tuple]] = None,
         accept_content_types: typing.Tuple[str] = _all_accept_content_types,
         stream: bool = False,
+        **kwargs,
     ) -> typing.Union[
         ApiResponseFor200Async,
         api_client.ApiResponseWithoutDeserializationAsync,
@@ -188,6 +189,7 @@ class BaseApi(api_client.Api):
             headers=_headers,
             auth_settings=_auth,
             timeout=timeout,
+            **kwargs
         )
     
         if stream:
@@ -248,7 +250,7 @@ class BaseApi(api_client.Api):
         self,
             path_params: typing.Optional[dict] = {},
         skip_deserialization: bool = True,
-        timeout: typing.Optional[typing.Union[int, typing.Tuple]] = None,
+        timeout: typing.Optional[typing.Union[float, typing.Tuple]] = None,
         accept_content_types: typing.Tuple[str] = _all_accept_content_types,
         stream: bool = False,
     ) -> typing.Union[
@@ -329,6 +331,7 @@ class ListRaw(BaseApi):
     async def alist(
         self,
         project_id: str,
+        **kwargs,
     ) -> typing.Union[
         ApiResponseFor200Async,
         api_client.ApiResponseWithoutDeserializationAsync,
@@ -339,6 +342,7 @@ class ListRaw(BaseApi):
         )
         return await self._alist_oapg(
             path_params=args.path,
+            **kwargs,
         )
     
     def list(
@@ -361,9 +365,11 @@ class List(BaseApi):
         self,
         project_id: str,
         validate: bool = False,
+        **kwargs,
     ):
         raw_response = await self.raw.alist(
             project_id=project_id,
+            **kwargs,
         )
         if validate:
             return RootModel[ExperimentsListResponsePydantic](raw_response.body).root
@@ -389,6 +395,7 @@ class ApiForget(BaseApi):
     async def aget(
         self,
         project_id: str,
+        **kwargs,
     ) -> typing.Union[
         ApiResponseFor200Async,
         api_client.ApiResponseWithoutDeserializationAsync,
@@ -399,6 +406,7 @@ class ApiForget(BaseApi):
         )
         return await self._alist_oapg(
             path_params=args.path,
+            **kwargs,
         )
     
     def get(

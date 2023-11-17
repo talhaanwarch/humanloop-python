@@ -216,10 +216,11 @@ class BaseApi(api_client.Api):
         self,
         body: typing.Any = None,
         skip_deserialization: bool = True,
-        timeout: typing.Optional[typing.Union[int, typing.Tuple]] = None,
+        timeout: typing.Optional[typing.Union[float, typing.Tuple]] = None,
         accept_content_types: typing.Tuple[str] = _all_accept_content_types,
         content_type: str = 'application/json',
         stream: bool = False,
+        **kwargs,
     ) -> typing.Union[
         ApiResponseFor200Async,
         api_client.ApiResponseWithoutDeserializationAsync,
@@ -269,6 +270,7 @@ class BaseApi(api_client.Api):
             body=body,
             auth_settings=_auth,
             timeout=timeout,
+            **kwargs
         )
     
         if stream:
@@ -329,7 +331,7 @@ class BaseApi(api_client.Api):
         self,
         body: typing.Any = None,
         skip_deserialization: bool = True,
-        timeout: typing.Optional[typing.Union[int, typing.Tuple]] = None,
+        timeout: typing.Optional[typing.Union[float, typing.Tuple]] = None,
         accept_content_types: typing.Tuple[str] = _all_accept_content_types,
         content_type: str = 'application/json',
         stream: bool = False,
@@ -428,6 +430,7 @@ class CreateRaw(BaseApi):
         stream: typing.Optional[bool] = None,
         user: typing.Optional[str] = None,
         tool_call: typing.Optional[typing.Union[str, typing.Dict[str, typing.Union[bool, date, datetime, dict, float, int, list, str, None]]]] = None,
+        **kwargs,
     ) -> typing.Union[
         ApiResponseFor200Async,
         api_client.ApiResponseWithoutDeserializationAsync,
@@ -453,6 +456,7 @@ class CreateRaw(BaseApi):
         )
         return await self._acreate_oapg(
             body=args.body,
+            **kwargs,
         )
     
     def create(
@@ -520,6 +524,7 @@ class Create(BaseApi):
         user: typing.Optional[str] = None,
         tool_call: typing.Optional[typing.Union[str, typing.Dict[str, typing.Union[bool, date, datetime, dict, float, int, list, str, None]]]] = None,
         validate: bool = False,
+        **kwargs,
     ):
         raw_response = await self.raw.acreate(
             messages=messages,
@@ -538,6 +543,7 @@ class Create(BaseApi):
             stream=stream,
             user=user,
             tool_call=tool_call,
+            **kwargs,
         )
         if validate:
             return ChatResponsePydantic(**raw_response.body)
@@ -608,6 +614,7 @@ class ApiForpost(BaseApi):
         stream: typing.Optional[bool] = None,
         user: typing.Optional[str] = None,
         tool_call: typing.Optional[typing.Union[str, typing.Dict[str, typing.Union[bool, date, datetime, dict, float, int, list, str, None]]]] = None,
+        **kwargs,
     ) -> typing.Union[
         ApiResponseFor200Async,
         api_client.ApiResponseWithoutDeserializationAsync,
@@ -633,6 +640,7 @@ class ApiForpost(BaseApi):
         )
         return await self._acreate_oapg(
             body=args.body,
+            **kwargs,
         )
     
     def post(

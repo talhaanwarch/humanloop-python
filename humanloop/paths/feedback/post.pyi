@@ -145,10 +145,11 @@ class BaseApi(api_client.Api):
         self,
         body: typing.Any = None,
         skip_deserialization: bool = True,
-        timeout: typing.Optional[typing.Union[int, typing.Tuple]] = None,
+        timeout: typing.Optional[typing.Union[float, typing.Tuple]] = None,
         accept_content_types: typing.Tuple[str] = _all_accept_content_types,
         content_type: str = 'application/json',
         stream: bool = False,
+        **kwargs,
     ) -> typing.Union[
         ApiResponseFor200Async,
         api_client.ApiResponseWithoutDeserializationAsync,
@@ -198,6 +199,7 @@ class BaseApi(api_client.Api):
             body=body,
             auth_settings=_auth,
             timeout=timeout,
+            **kwargs
         )
     
         if stream:
@@ -258,7 +260,7 @@ class BaseApi(api_client.Api):
         self,
         body: typing.Any = None,
         skip_deserialization: bool = True,
-        timeout: typing.Optional[typing.Union[int, typing.Tuple]] = None,
+        timeout: typing.Optional[typing.Union[float, typing.Tuple]] = None,
         accept_content_types: typing.Tuple[str] = _all_accept_content_types,
         content_type: str = 'application/json',
         stream: bool = False,
@@ -348,6 +350,7 @@ class FeedbackRaw(BaseApi):
         user: typing.Optional[str] = None,
         created_at: typing.Optional[datetime] = None,
         unset: typing.Optional[bool] = None,
+        **kwargs,
     ) -> typing.Union[
         ApiResponseFor200Async,
         api_client.ApiResponseWithoutDeserializationAsync,
@@ -364,6 +367,7 @@ class FeedbackRaw(BaseApi):
         )
         return await self._afeedback_oapg(
             body=args.body,
+            **kwargs,
         )
     
     def feedback(
@@ -404,6 +408,7 @@ class Feedback(BaseApi):
         created_at: typing.Optional[datetime] = None,
         unset: typing.Optional[bool] = None,
         validate: bool = False,
+        **kwargs,
     ):
         raw_response = await self.raw.afeedback(
             body=body,
@@ -413,6 +418,7 @@ class Feedback(BaseApi):
             user=user,
             created_at=created_at,
             unset=unset,
+            **kwargs,
         )
         if validate:
             return RootModel[FeedbackSubmitResponsePydantic](raw_response.body).root
@@ -456,6 +462,7 @@ class ApiForpost(BaseApi):
         user: typing.Optional[str] = None,
         created_at: typing.Optional[datetime] = None,
         unset: typing.Optional[bool] = None,
+        **kwargs,
     ) -> typing.Union[
         ApiResponseFor200Async,
         api_client.ApiResponseWithoutDeserializationAsync,
@@ -472,6 +479,7 @@ class ApiForpost(BaseApi):
         )
         return await self._afeedback_oapg(
             body=args.body,
+            **kwargs,
         )
     
     def post(

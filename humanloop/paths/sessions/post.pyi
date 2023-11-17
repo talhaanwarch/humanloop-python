@@ -106,9 +106,10 @@ class BaseApi(api_client.Api):
     async def _acreate_oapg(
         self,
         skip_deserialization: bool = True,
-        timeout: typing.Optional[typing.Union[int, typing.Tuple]] = None,
+        timeout: typing.Optional[typing.Union[float, typing.Tuple]] = None,
         accept_content_types: typing.Tuple[str] = _all_accept_content_types,
         stream: bool = False,
+        **kwargs,
     ) -> typing.Union[
         ApiResponseFor201Async,
         api_client.ApiResponseWithoutDeserializationAsync,
@@ -142,6 +143,7 @@ class BaseApi(api_client.Api):
             headers=_headers,
             auth_settings=_auth,
             timeout=timeout,
+            **kwargs
         )
     
         if stream:
@@ -201,7 +203,7 @@ class BaseApi(api_client.Api):
     def _create_oapg(
         self,
         skip_deserialization: bool = True,
-        timeout: typing.Optional[typing.Union[int, typing.Tuple]] = None,
+        timeout: typing.Optional[typing.Union[float, typing.Tuple]] = None,
         accept_content_types: typing.Tuple[str] = _all_accept_content_types,
         stream: bool = False,
     ) -> typing.Union[
@@ -267,6 +269,7 @@ class CreateRaw(BaseApi):
 
     async def acreate(
         self,
+        **kwargs,
     ) -> typing.Union[
         ApiResponseFor201Async,
         api_client.ApiResponseWithoutDeserializationAsync,
@@ -275,6 +278,7 @@ class CreateRaw(BaseApi):
         args = self._create_mapped_args(
         )
         return await self._acreate_oapg(
+            **kwargs,
         )
     
     def create(
@@ -293,8 +297,10 @@ class Create(BaseApi):
     async def acreate(
         self,
         validate: bool = False,
+        **kwargs,
     ):
         raw_response = await self.raw.acreate(
+            **kwargs,
         )
         if validate:
             return CreateSessionResponsePydantic(**raw_response.body)
@@ -317,6 +323,7 @@ class ApiForpost(BaseApi):
 
     async def apost(
         self,
+        **kwargs,
     ) -> typing.Union[
         ApiResponseFor201Async,
         api_client.ApiResponseWithoutDeserializationAsync,
@@ -325,6 +332,7 @@ class ApiForpost(BaseApi):
         args = self._create_mapped_args(
         )
         return await self._acreate_oapg(
+            **kwargs,
         )
     
     def post(

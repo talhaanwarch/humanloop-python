@@ -212,10 +212,11 @@ class BaseApi(api_client.Api):
         body: typing.Any = None,
             path_params: typing.Optional[dict] = {},
         skip_deserialization: bool = True,
-        timeout: typing.Optional[typing.Union[int, typing.Tuple]] = None,
+        timeout: typing.Optional[typing.Union[float, typing.Tuple]] = None,
         accept_content_types: typing.Tuple[str] = _all_accept_content_types,
         content_type: str = 'application/json',
         stream: bool = False,
+        **kwargs,
     ) -> typing.Union[
         ApiResponseFor200Async,
         api_client.ApiResponseWithoutDeserializationAsync,
@@ -279,6 +280,7 @@ class BaseApi(api_client.Api):
             body=body,
             auth_settings=_auth,
             timeout=timeout,
+            **kwargs
         )
     
         if stream:
@@ -340,7 +342,7 @@ class BaseApi(api_client.Api):
         body: typing.Any = None,
             path_params: typing.Optional[dict] = {},
         skip_deserialization: bool = True,
-        timeout: typing.Optional[typing.Union[int, typing.Tuple]] = None,
+        timeout: typing.Optional[typing.Union[float, typing.Tuple]] = None,
         accept_content_types: typing.Tuple[str] = _all_accept_content_types,
         content_type: str = 'application/json',
         stream: bool = False,
@@ -441,6 +443,7 @@ class UpdateRaw(BaseApi):
         output: typing.Optional[str] = None,
         error: typing.Optional[str] = None,
         duration: typing.Optional[typing.Union[int, float]] = None,
+        **kwargs,
     ) -> typing.Union[
         ApiResponseFor200Async,
         api_client.ApiResponseWithoutDeserializationAsync,
@@ -455,6 +458,7 @@ class UpdateRaw(BaseApi):
         return await self._aupdate_oapg(
             body=args.body,
             path_params=args.path,
+            **kwargs,
         )
     
     def update(
@@ -487,12 +491,14 @@ class Update(BaseApi):
         error: typing.Optional[str] = None,
         duration: typing.Optional[typing.Union[int, float]] = None,
         validate: bool = False,
+        **kwargs,
     ):
         raw_response = await self.raw.aupdate(
             id=id,
             output=output,
             error=error,
             duration=duration,
+            **kwargs,
         )
         if validate:
             return LogResponsePydantic(**raw_response.body)
@@ -527,6 +533,7 @@ class ApiForpatch(BaseApi):
         output: typing.Optional[str] = None,
         error: typing.Optional[str] = None,
         duration: typing.Optional[typing.Union[int, float]] = None,
+        **kwargs,
     ) -> typing.Union[
         ApiResponseFor200Async,
         api_client.ApiResponseWithoutDeserializationAsync,
@@ -541,6 +548,7 @@ class ApiForpatch(BaseApi):
         return await self._aupdate_oapg(
             body=args.body,
             path_params=args.path,
+            **kwargs,
         )
     
     def patch(

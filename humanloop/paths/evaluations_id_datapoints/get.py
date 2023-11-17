@@ -244,9 +244,10 @@ class BaseApi(api_client.Api):
             query_params: typing.Optional[dict] = {},
             path_params: typing.Optional[dict] = {},
         skip_deserialization: bool = True,
-        timeout: typing.Optional[typing.Union[int, typing.Tuple]] = None,
+        timeout: typing.Optional[typing.Union[float, typing.Tuple]] = None,
         accept_content_types: typing.Tuple[str] = _all_accept_content_types,
         stream: bool = False,
+        **kwargs,
     ) -> typing.Union[
         ApiResponseFor200Async,
         api_client.ApiResponseWithoutDeserializationAsync,
@@ -310,6 +311,7 @@ class BaseApi(api_client.Api):
             auth_settings=_auth,
             prefix_separator_iterator=prefix_separator_iterator,
             timeout=timeout,
+            **kwargs
         )
     
         if stream:
@@ -371,7 +373,7 @@ class BaseApi(api_client.Api):
             query_params: typing.Optional[dict] = {},
             path_params: typing.Optional[dict] = {},
         skip_deserialization: bool = True,
-        timeout: typing.Optional[typing.Union[int, typing.Tuple]] = None,
+        timeout: typing.Optional[typing.Union[float, typing.Tuple]] = None,
         accept_content_types: typing.Tuple[str] = _all_accept_content_types,
         stream: bool = False,
     ) -> typing.Union[
@@ -470,6 +472,7 @@ class ListDatapointsRaw(BaseApi):
         id: str,
         page: typing.Optional[int] = None,
         size: typing.Optional[int] = None,
+        **kwargs,
     ) -> typing.Union[
         ApiResponseFor200Async,
         api_client.ApiResponseWithoutDeserializationAsync,
@@ -483,6 +486,7 @@ class ListDatapointsRaw(BaseApi):
         return await self._alist_datapoints_oapg(
             query_params=args.query,
             path_params=args.path,
+            **kwargs,
         )
     
     def list_datapoints(
@@ -512,11 +516,13 @@ class ListDatapoints(BaseApi):
         page: typing.Optional[int] = None,
         size: typing.Optional[int] = None,
         validate: bool = False,
+        **kwargs,
     ):
         raw_response = await self.raw.alist_datapoints(
             id=id,
             page=page,
             size=size,
+            **kwargs,
         )
         if validate:
             return PaginatedDataEvaluationDatapointSnapshotResponsePydantic(**raw_response.body)
@@ -548,6 +554,7 @@ class ApiForget(BaseApi):
         id: str,
         page: typing.Optional[int] = None,
         size: typing.Optional[int] = None,
+        **kwargs,
     ) -> typing.Union[
         ApiResponseFor200Async,
         api_client.ApiResponseWithoutDeserializationAsync,
@@ -561,6 +568,7 @@ class ApiForget(BaseApi):
         return await self._alist_datapoints_oapg(
             query_params=args.query,
             path_params=args.path,
+            **kwargs,
         )
     
     def get(

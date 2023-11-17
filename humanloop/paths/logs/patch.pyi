@@ -204,10 +204,11 @@ class BaseApi(api_client.Api):
         body: typing.Any = None,
             query_params: typing.Optional[dict] = {},
         skip_deserialization: bool = True,
-        timeout: typing.Optional[typing.Union[int, typing.Tuple]] = None,
+        timeout: typing.Optional[typing.Union[float, typing.Tuple]] = None,
         accept_content_types: typing.Tuple[str] = _all_accept_content_types,
         content_type: str = 'application/json',
         stream: bool = False,
+        **kwargs,
     ) -> typing.Union[
         ApiResponseFor200Async,
         api_client.ApiResponseWithoutDeserializationAsync,
@@ -272,6 +273,7 @@ class BaseApi(api_client.Api):
             auth_settings=_auth,
             prefix_separator_iterator=prefix_separator_iterator,
             timeout=timeout,
+            **kwargs
         )
     
         if stream:
@@ -333,7 +335,7 @@ class BaseApi(api_client.Api):
         body: typing.Any = None,
             query_params: typing.Optional[dict] = {},
         skip_deserialization: bool = True,
-        timeout: typing.Optional[typing.Union[int, typing.Tuple]] = None,
+        timeout: typing.Optional[typing.Union[float, typing.Tuple]] = None,
         accept_content_types: typing.Tuple[str] = _all_accept_content_types,
         content_type: str = 'application/json',
         stream: bool = False,
@@ -435,6 +437,7 @@ class UpdateByRefRaw(BaseApi):
         output: typing.Optional[str] = None,
         error: typing.Optional[str] = None,
         duration: typing.Optional[typing.Union[int, float]] = None,
+        **kwargs,
     ) -> typing.Union[
         ApiResponseFor200Async,
         api_client.ApiResponseWithoutDeserializationAsync,
@@ -449,6 +452,7 @@ class UpdateByRefRaw(BaseApi):
         return await self._aupdate_by_ref_oapg(
             body=args.body,
             query_params=args.query,
+            **kwargs,
         )
     
     def update_by_ref(
@@ -481,12 +485,14 @@ class UpdateByRef(BaseApi):
         error: typing.Optional[str] = None,
         duration: typing.Optional[typing.Union[int, float]] = None,
         validate: bool = False,
+        **kwargs,
     ):
         raw_response = await self.raw.aupdate_by_ref(
             reference_id=reference_id,
             output=output,
             error=error,
             duration=duration,
+            **kwargs,
         )
         if validate:
             return LogResponsePydantic(**raw_response.body)
@@ -521,6 +527,7 @@ class ApiForpatch(BaseApi):
         output: typing.Optional[str] = None,
         error: typing.Optional[str] = None,
         duration: typing.Optional[typing.Union[int, float]] = None,
+        **kwargs,
     ) -> typing.Union[
         ApiResponseFor200Async,
         api_client.ApiResponseWithoutDeserializationAsync,
@@ -535,6 +542,7 @@ class ApiForpatch(BaseApi):
         return await self._aupdate_by_ref_oapg(
             body=args.body,
             query_params=args.query,
+            **kwargs,
         )
     
     def patch(

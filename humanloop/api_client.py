@@ -1290,9 +1290,10 @@ class ApiClient:
         fields: typing.Optional[typing.Tuple[typing.Tuple[str, str], ...]] = None,
         auth_settings: typing.Optional[typing.List[str]] = None,
         stream: bool = False,
-        timeout: typing.Optional[typing.Union[int, typing.Tuple]] = None,
+        timeout: typing.Optional[typing.Union[float, typing.Tuple]] = None,
         host: typing.Optional[str] = None,
         prefix_separator_iterator: PrefixSeparatorIterator = None,
+        **kwargs
     ) -> AsyncResponseWrapper:
 
         # header parameters
@@ -1350,6 +1351,7 @@ class ApiClient:
             body=serialized_body,
             stream=stream,
             timeout=timeout,
+            **kwargs
         )
 
 
@@ -1365,7 +1367,7 @@ class ApiClient:
         fields: typing.Optional[typing.Tuple[typing.Tuple[str, str], ...]] = None,
         auth_settings: typing.Optional[typing.List[str]] = None,
         stream: bool = False,
-        timeout: typing.Optional[typing.Union[int, typing.Tuple]] = None,
+        timeout: typing.Optional[typing.Union[float, typing.Tuple]] = None,
         host: typing.Optional[str] = None,
         prefix_separator_iterator: PrefixSeparatorIterator = None,
     ) -> ResponseWrapper:
@@ -1440,9 +1442,10 @@ class ApiClient:
         fields: typing.Optional[typing.Tuple[typing.Tuple[str, str], ...]] = None,
         auth_settings: typing.Optional[typing.List[str]] = None,
         stream: bool = False,
-        timeout: typing.Optional[typing.Union[int, typing.Tuple]] = None,
+        timeout: typing.Optional[typing.Union[float, typing.Tuple]] = None,
         host: typing.Optional[str] = None,
         prefix_separator_iterator: PrefixSeparatorIterator = None,
+        **kwargs
     ) -> AsyncResponseWrapper:
         """Makes the HTTP request (synchronous) and returns deserialized data.
 
@@ -1480,6 +1483,7 @@ class ApiClient:
             timeout,
             host,
             prefix_separator_iterator,
+            **kwargs
         )
 
     def call_api(
@@ -1492,7 +1496,7 @@ class ApiClient:
         fields: typing.Optional[typing.Tuple[typing.Tuple[str, str], ...]] = None,
         auth_settings: typing.Optional[typing.List[str]] = None,
         stream: bool = False,
-        timeout: typing.Optional[typing.Union[int, typing.Tuple]] = None,
+        timeout: typing.Optional[typing.Union[float, typing.Tuple]] = None,
         host: typing.Optional[str] = None,
         prefix_separator_iterator: PrefixSeparatorIterator = None,
     ) -> ResponseWrapper:
@@ -1552,8 +1556,11 @@ class ApiClient:
         fields: typing.Optional[typing.Tuple[typing.Tuple[str, str], ...]] = None,
         body: typing.Optional[typing.Union[str, bytes]] = None,
         stream: bool = False,
-        timeout: typing.Optional[typing.Union[int, typing.Tuple]] = None,
+        timeout: typing.Optional[typing.Union[float, typing.Tuple]] = None,
+        **kwargs
     ) -> AsyncResponseWrapper:
+        if timeout is None:
+            timeout = 600
         if body and fields:
             raise ApiValueError("body parameter cannot be used with fields parameter")
         data = None
@@ -1564,26 +1571,25 @@ class ApiClient:
         session = aiohttp.ClientSession()
         t1 = time.time()
         if method == "GET":
-            session.get(url)
-            response = await session.get(url, headers=headers)
+            response = await session.get(url, headers=headers, timeout=timeout, **kwargs)
             return AsyncResponseWrapper(response, time.time() - t1, session)
         elif method == "HEAD":
-            response = await session.head(url, headers=headers)
+            response = await session.head(url, headers=headers, timeout=timeout, **kwargs)
             return AsyncResponseWrapper(response, time.time() - t1, session)
         elif method == "OPTIONS":
-            response = await session.options(url, data=data, headers=headers)
+            response = await session.options(url, data=data, headers=headers, timeout=timeout, **kwargs)
             return AsyncResponseWrapper(response, time.time() - t1, session)
         elif method == "POST":
-            response = await session.post(url, data=data, headers=headers)
+            response = await session.post(url, data=data, headers=headers, timeout=timeout, **kwargs)
             return AsyncResponseWrapper(response, time.time() - t1, session)
         elif method == "PUT":
-            response = await session.put(url, data=data, headers=headers)
+            response = await session.put(url, data=data, headers=headers, timeout=timeout, **kwargs)
             return AsyncResponseWrapper(response, time.time() - t1, session)
         elif method == "PATCH":
-            response = await session.patch(url, data=data, headers=headers)
+            response = await session.patch(url, data=data, headers=headers, timeout=timeout, **kwargs)
             return AsyncResponseWrapper(response, time.time() - t1, session)
         elif method == "DELETE":
-            response = await session.delete(url, data=data, headers=headers)
+            response = await session.delete(url, data=data, headers=headers, timeout=timeout, **kwargs)
             return AsyncResponseWrapper(response, time.time() - t1, session)
         raise ApiValueError(
             "http method must be `GET`, `HEAD`, `OPTIONS`,"
@@ -1598,7 +1604,7 @@ class ApiClient:
         fields: typing.Optional[typing.Tuple[typing.Tuple[str, str], ...]] = None,
         body: typing.Optional[typing.Union[str, bytes]] = None,
         stream: bool = False,
-        timeout: typing.Optional[typing.Union[int, typing.Tuple]] = None,
+        timeout: typing.Optional[typing.Union[float, typing.Tuple]] = None,
     ) -> ResponseWrapper:
         """Makes the HTTP request using RESTClient."""
         if method == "GET":

@@ -161,10 +161,11 @@ class BaseApi(api_client.Api):
         body: typing.Any = None,
             path_params: typing.Optional[dict] = {},
         skip_deserialization: bool = True,
-        timeout: typing.Optional[typing.Union[int, typing.Tuple]] = None,
+        timeout: typing.Optional[typing.Union[float, typing.Tuple]] = None,
         accept_content_types: typing.Tuple[str] = _all_accept_content_types,
         content_type: str = 'application/json',
         stream: bool = False,
+        **kwargs,
     ) -> typing.Union[
         ApiResponseFor201Async,
         api_client.ApiResponseWithoutDeserializationAsync,
@@ -228,6 +229,7 @@ class BaseApi(api_client.Api):
             body=body,
             auth_settings=_auth,
             timeout=timeout,
+            **kwargs
         )
     
         if stream:
@@ -289,7 +291,7 @@ class BaseApi(api_client.Api):
         body: typing.Any = None,
             path_params: typing.Optional[dict] = {},
         skip_deserialization: bool = True,
-        timeout: typing.Optional[typing.Union[int, typing.Tuple]] = None,
+        timeout: typing.Optional[typing.Union[float, typing.Tuple]] = None,
         accept_content_types: typing.Tuple[str] = _all_accept_content_types,
         content_type: str = 'application/json',
         stream: bool = False,
@@ -389,6 +391,7 @@ class CreateRaw(BaseApi):
         description: str,
         name: str,
         project_id: str,
+        **kwargs,
     ) -> typing.Union[
         ApiResponseFor201Async,
         api_client.ApiResponseWithoutDeserializationAsync,
@@ -402,6 +405,7 @@ class CreateRaw(BaseApi):
         return await self._acreate_oapg(
             body=args.body,
             path_params=args.path,
+            **kwargs,
         )
     
     def create(
@@ -431,11 +435,13 @@ class Create(BaseApi):
         name: str,
         project_id: str,
         validate: bool = False,
+        **kwargs,
     ):
         raw_response = await self.raw.acreate(
             description=description,
             name=name,
             project_id=project_id,
+            **kwargs,
         )
         if validate:
             return DatasetResponsePydantic(**raw_response.body)
@@ -467,6 +473,7 @@ class ApiForpost(BaseApi):
         description: str,
         name: str,
         project_id: str,
+        **kwargs,
     ) -> typing.Union[
         ApiResponseFor201Async,
         api_client.ApiResponseWithoutDeserializationAsync,
@@ -480,6 +487,7 @@ class ApiForpost(BaseApi):
         return await self._acreate_oapg(
             body=args.body,
             path_params=args.path,
+            **kwargs,
         )
     
     def post(
