@@ -530,7 +530,7 @@ class Register(BaseApi):
         tools: typing.Optional[ProjectModelConfigRequestTools] = None,
         validate: bool = False,
         **kwargs,
-    ):
+    ) -> ProjectConfigResponsePydantic:
         raw_response = await self.raw.aregister(
             model=model,
             description=description,
@@ -582,7 +582,7 @@ class Register(BaseApi):
         endpoint: typing.Optional[ModelEndpoints] = None,
         tools: typing.Optional[ProjectModelConfigRequestTools] = None,
         validate: bool = False,
-    ):
+    ) -> ProjectConfigResponsePydantic:
         raw_response = self.raw.register(
             model=model,
             description=description,

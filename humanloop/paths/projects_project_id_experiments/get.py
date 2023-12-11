@@ -369,7 +369,7 @@ class List(BaseApi):
         project_id: str,
         validate: bool = False,
         **kwargs,
-    ):
+    ) -> ExperimentsListResponsePydantic:
         raw_response = await self.raw.alist(
             project_id=project_id,
             **kwargs,
@@ -383,7 +383,7 @@ class List(BaseApi):
         self,
         project_id: str,
         validate: bool = False,
-    ):
+    ) -> ExperimentsListResponsePydantic:
         raw_response = self.raw.list(
             project_id=project_id,
         )

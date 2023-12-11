@@ -361,7 +361,7 @@ class Export(BaseApi):
         id: str,
         validate: bool = False,
         **kwargs,
-    ):
+    ) -> str:
         raw_response = await self.raw.aexport(
             id=id,
             **kwargs,
@@ -375,7 +375,7 @@ class Export(BaseApi):
         self,
         id: str,
         validate: bool = False,
-    ):
+    ) -> str:
         raw_response = self.raw.export(
             id=id,
         )

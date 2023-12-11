@@ -457,7 +457,7 @@ class ListDatapoints(BaseApi):
         size: typing.Optional[int] = None,
         validate: bool = False,
         **kwargs,
-    ):
+    ) -> PaginatedDataEvaluationDatapointSnapshotResponsePydantic:
         raw_response = await self.raw.alist_datapoints(
             id=id,
             page=page,
@@ -475,7 +475,7 @@ class ListDatapoints(BaseApi):
         page: typing.Optional[int] = None,
         size: typing.Optional[int] = None,
         validate: bool = False,
-    ):
+    ) -> PaginatedDataEvaluationDatapointSnapshotResponsePydantic:
         raw_response = self.raw.list_datapoints(
             id=id,
             page=page,

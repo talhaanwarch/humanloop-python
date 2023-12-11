@@ -360,7 +360,7 @@ class ListDeployedConfigs(BaseApi):
         id: str,
         validate: bool = False,
         **kwargs,
-    ):
+    ) -> ProjectsGetDeployedConfigsResponsePydantic:
         raw_response = await self.raw.alist_deployed_configs(
             id=id,
             **kwargs,
@@ -374,7 +374,7 @@ class ListDeployedConfigs(BaseApi):
         self,
         id: str,
         validate: bool = False,
-    ):
+    ) -> ProjectsGetDeployedConfigsResponsePydantic:
         raw_response = self.raw.list_deployed_configs(
             id=id,
         )

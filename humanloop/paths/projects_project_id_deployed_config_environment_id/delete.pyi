@@ -375,7 +375,7 @@ class DeleteDeployedConfig(BaseApi):
         environment_id: str,
         validate: bool = False,
         **kwargs,
-    ):
+    ) -> Dictionary:
         raw_response = await self.raw.adelete_deployed_config(
             project_id=project_id,
             environment_id=environment_id,
@@ -391,7 +391,7 @@ class DeleteDeployedConfig(BaseApi):
         project_id: str,
         environment_id: str,
         validate: bool = False,
-    ):
+    ) -> Dictionary:
         raw_response = self.raw.delete_deployed_config(
             project_id=project_id,
             environment_id=environment_id,

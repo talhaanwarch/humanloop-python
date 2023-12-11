@@ -502,7 +502,7 @@ class Update(BaseApi):
         name: typing.Optional[str] = None,
         validate: bool = False,
         **kwargs,
-    ):
+    ) -> FinetuneResponsePydantic:
         raw_response = await self.raw.aupdate(
             id=id,
             project_id=project_id,
@@ -520,7 +520,7 @@ class Update(BaseApi):
         project_id: str,
         name: typing.Optional[str] = None,
         validate: bool = False,
-    ):
+    ) -> FinetuneResponsePydantic:
         raw_response = self.raw.update(
             id=id,
             project_id=project_id,

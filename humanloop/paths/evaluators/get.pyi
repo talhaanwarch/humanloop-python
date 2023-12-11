@@ -292,7 +292,7 @@ class List(BaseApi):
         self,
         validate: bool = False,
         **kwargs,
-    ):
+    ) -> EvaluatorsListResponsePydantic:
         raw_response = await self.raw.alist(
             **kwargs,
         )
@@ -304,7 +304,7 @@ class List(BaseApi):
     def list(
         self,
         validate: bool = False,
-    ):
+    ) -> EvaluatorsListResponsePydantic:
         raw_response = self.raw.list(
         )
         if validate:

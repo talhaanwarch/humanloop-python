@@ -464,7 +464,7 @@ class CreateDatapoint(BaseApi):
         target: typing.Optional[CreateDatapointRequestTarget] = None,
         validate: bool = False,
         **kwargs,
-    ):
+    ) -> DatasetsCreateDatapointResponsePydantic:
         raw_response = await self.raw.acreate_datapoint(
             body=body,
             dataset_id=dataset_id,
@@ -488,7 +488,7 @@ class CreateDatapoint(BaseApi):
         messages: typing.Optional[typing.List[ChatMessage]] = None,
         target: typing.Optional[CreateDatapointRequestTarget] = None,
         validate: bool = False,
-    ):
+    ) -> DatasetsCreateDatapointResponsePydantic:
         raw_response = self.raw.create_datapoint(
             body=body,
             dataset_id=dataset_id,

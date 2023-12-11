@@ -461,7 +461,7 @@ class Create(BaseApi):
         provider_api_keys: typing.Optional[ProviderApiKeys] = None,
         validate: bool = False,
         **kwargs,
-    ):
+    ) -> EvaluationResponsePydantic:
         raw_response = await self.raw.acreate(
             config_id=config_id,
             evaluator_ids=evaluator_ids,
@@ -483,7 +483,7 @@ class Create(BaseApi):
         project_id: str,
         provider_api_keys: typing.Optional[ProviderApiKeys] = None,
         validate: bool = False,
-    ):
+    ) -> EvaluationResponsePydantic:
         raw_response = self.raw.create(
             config_id=config_id,
             evaluator_ids=evaluator_ids,

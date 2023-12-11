@@ -537,7 +537,7 @@ class List(BaseApi):
         order: typing.Optional[SortOrder] = None,
         validate: bool = False,
         **kwargs,
-    ):
+    ) -> PaginatedDataProjectResponsePydantic:
         raw_response = await self.raw.alist(
             page=page,
             size=size,
@@ -561,7 +561,7 @@ class List(BaseApi):
         sort_by: typing.Optional[ProjectSortBy] = None,
         order: typing.Optional[SortOrder] = None,
         validate: bool = False,
-    ):
+    ) -> PaginatedDataProjectResponsePydantic:
         raw_response = self.raw.list(
             page=page,
             size=size,

@@ -361,7 +361,7 @@ class Delete(BaseApi):
         experiment_id: str,
         validate: bool = False,
         **kwargs,
-    ):
+    ) -> None:
         raw_response = await self.raw.adelete(
             experiment_id=experiment_id,
             **kwargs,
@@ -372,7 +372,7 @@ class Delete(BaseApi):
         self,
         experiment_id: str,
         validate: bool = False,
-    ):
+    ) -> None:
         raw_response = self.raw.delete(
             experiment_id=experiment_id,
         )

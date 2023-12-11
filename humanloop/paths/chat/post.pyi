@@ -521,7 +521,7 @@ class Create(BaseApi):
         response_format: typing.Optional[ResponseFormat] = None,
         validate: bool = False,
         **kwargs,
-    ):
+    ) -> ChatResponsePydantic:
         raw_response = await self.raw.acreate(
             messages=messages,
             model_config=model_config,
@@ -573,7 +573,7 @@ class Create(BaseApi):
         seed: typing.Optional[int] = None,
         response_format: typing.Optional[ResponseFormat] = None,
         validate: bool = False,
-    ):
+    ) -> ChatResponsePydantic:
         raw_response = self.raw.create(
             messages=messages,
             model_config=model_config,

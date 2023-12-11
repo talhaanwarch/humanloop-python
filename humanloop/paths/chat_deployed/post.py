@@ -527,7 +527,7 @@ class CreateDeployed(BaseApi):
         environment: typing.Optional[str] = None,
         validate: bool = False,
         **kwargs,
-    ):
+    ) -> ChatResponsePydantic:
         raw_response = await self.raw.acreate_deployed(
             messages=messages,
             project=project,
@@ -579,7 +579,7 @@ class CreateDeployed(BaseApi):
         response_format: typing.Optional[ResponseFormat] = None,
         environment: typing.Optional[str] = None,
         validate: bool = False,
-    ):
+    ) -> ChatResponsePydantic:
         raw_response = self.raw.create_deployed(
             messages=messages,
             project=project,

@@ -439,7 +439,7 @@ class Create(BaseApi):
         project_id: str,
         validate: bool = False,
         **kwargs,
-    ):
+    ) -> DatasetResponsePydantic:
         raw_response = await self.raw.acreate(
             description=description,
             name=name,
@@ -457,7 +457,7 @@ class Create(BaseApi):
         name: str,
         project_id: str,
         validate: bool = False,
-    ):
+    ) -> DatasetResponsePydantic:
         raw_response = self.raw.create(
             description=description,
             name=name,

@@ -522,7 +522,7 @@ class Log(BaseApi):
         duration: typing.Optional[typing.Union[int, float]] = None,
         validate: bool = False,
         **kwargs,
-    ):
+    ) -> LogsLogResponsePydantic:
         raw_response = await self.raw.alog(
             body=body,
             project=project,
@@ -574,7 +574,7 @@ class Log(BaseApi):
         error: typing.Optional[str] = None,
         duration: typing.Optional[typing.Union[int, float]] = None,
         validate: bool = False,
-    ):
+    ) -> LogsLogResponsePydantic:
         raw_response = self.raw.log(
             body=body,
             project=project,

@@ -441,7 +441,7 @@ class DeployConfig(BaseApi):
         environments: typing.Optional[typing.List[EnvironmentRequest]] = None,
         validate: bool = False,
         **kwargs,
-    ):
+    ) -> ProjectsDeployConfigToEnvironmentsResponsePydantic:
         raw_response = await self.raw.adeploy_config(
             project_id=project_id,
             config_id=config_id,
@@ -461,7 +461,7 @@ class DeployConfig(BaseApi):
         experiment_id: typing.Optional[str] = None,
         environments: typing.Optional[typing.List[EnvironmentRequest]] = None,
         validate: bool = False,
-    ):
+    ) -> ProjectsDeployConfigToEnvironmentsResponsePydantic:
         raw_response = self.raw.deploy_config(
             project_id=project_id,
             config_id=config_id,

@@ -500,7 +500,7 @@ class Serialize(BaseApi):
         prompt_template: typing.Optional[str] = None,
         validate: bool = False,
         **kwargs,
-    ):
+    ) -> str:
         raw_response = await self.raw.aserialize(
             body=body,
             description=description,
@@ -548,7 +548,7 @@ class Serialize(BaseApi):
         tools: typing.Optional[ModelConfigChatRequestTools] = None,
         prompt_template: typing.Optional[str] = None,
         validate: bool = False,
-    ):
+    ) -> str:
         raw_response = self.raw.serialize(
             body=body,
             description=description,

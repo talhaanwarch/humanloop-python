@@ -471,7 +471,7 @@ class Update(BaseApi):
         model_config: typing.Optional[ModelConfigCompletionRequest] = None,
         validate: bool = False,
         **kwargs,
-    ):
+    ) -> EvaluatorResponsePydantic:
         raw_response = await self.raw.aupdate(
             id=id,
             description=description,
@@ -497,7 +497,7 @@ class Update(BaseApi):
         code: typing.Optional[str] = None,
         model_config: typing.Optional[ModelConfigCompletionRequest] = None,
         validate: bool = False,
-    ):
+    ) -> EvaluatorResponsePydantic:
         raw_response = self.raw.update(
             id=id,
             description=description,

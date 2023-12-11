@@ -369,7 +369,7 @@ class Sample(BaseApi):
         experiment_id: str,
         validate: bool = False,
         **kwargs,
-    ):
+    ) -> GetModelConfigResponsePydantic:
         raw_response = await self.raw.asample(
             experiment_id=experiment_id,
             **kwargs,
@@ -383,7 +383,7 @@ class Sample(BaseApi):
         self,
         experiment_id: str,
         validate: bool = False,
-    ):
+    ) -> GetModelConfigResponsePydantic:
         raw_response = self.raw.sample(
             experiment_id=experiment_id,
         )

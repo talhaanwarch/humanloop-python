@@ -430,7 +430,7 @@ class Update(BaseApi):
         name: typing.Optional[str] = None,
         validate: bool = False,
         **kwargs,
-    ):
+    ) -> DatasetResponsePydantic:
         raw_response = await self.raw.aupdate(
             id=id,
             description=description,
@@ -448,7 +448,7 @@ class Update(BaseApi):
         description: typing.Optional[str] = None,
         name: typing.Optional[str] = None,
         validate: bool = False,
-    ):
+    ) -> DatasetResponsePydantic:
         raw_response = self.raw.update(
             id=id,
             description=description,

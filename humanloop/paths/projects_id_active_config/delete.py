@@ -439,7 +439,7 @@ class DeactivateConfig(BaseApi):
         environment: typing.Optional[str] = None,
         validate: bool = False,
         **kwargs,
-    ):
+    ) -> ProjectResponsePydantic:
         raw_response = await self.raw.adeactivate_config(
             id=id,
             environment=environment,
@@ -455,7 +455,7 @@ class DeactivateConfig(BaseApi):
         id: str,
         environment: typing.Optional[str] = None,
         validate: bool = False,
-    ):
+    ) -> ProjectResponsePydantic:
         raw_response = self.raw.deactivate_config(
             id=id,
             environment=environment,

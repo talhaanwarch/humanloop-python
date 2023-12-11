@@ -382,7 +382,7 @@ class Create(BaseApi):
         directory_id: typing.Optional[str] = None,
         validate: bool = False,
         **kwargs,
-    ):
+    ) -> ProjectResponsePydantic:
         raw_response = await self.raw.acreate(
             name=name,
             feedback_types=feedback_types,
@@ -400,7 +400,7 @@ class Create(BaseApi):
         feedback_types: typing.Optional[typing.List[FeedbackTypeRequest]] = None,
         directory_id: typing.Optional[str] = None,
         validate: bool = False,
-    ):
+    ) -> ProjectResponsePydantic:
         raw_response = self.raw.create(
             name=name,
             feedback_types=feedback_types,

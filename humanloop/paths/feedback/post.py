@@ -412,7 +412,7 @@ class Feedback(BaseApi):
         unset: typing.Optional[bool] = None,
         validate: bool = False,
         **kwargs,
-    ):
+    ) -> FeedbackSubmitResponsePydantic:
         raw_response = await self.raw.afeedback(
             body=body,
             type=type,
@@ -438,7 +438,7 @@ class Feedback(BaseApi):
         created_at: typing.Optional[datetime] = None,
         unset: typing.Optional[bool] = None,
         validate: bool = False,
-    ):
+    ) -> FeedbackSubmitResponsePydantic:
         raw_response = self.raw.feedback(
             body=body,
             type=type,

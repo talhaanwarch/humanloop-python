@@ -496,7 +496,7 @@ class Create(BaseApi):
         user: typing.Optional[str] = None,
         validate: bool = False,
         **kwargs,
-    ):
+    ) -> CompletionResponsePydantic:
         raw_response = await self.raw.acreate(
             model_config=model_config,
             project=project,
@@ -544,7 +544,7 @@ class Create(BaseApi):
         seed: typing.Optional[int] = None,
         user: typing.Optional[str] = None,
         validate: bool = False,
-    ):
+    ) -> CompletionResponsePydantic:
         raw_response = self.raw.create(
             model_config=model_config,
             project=project,

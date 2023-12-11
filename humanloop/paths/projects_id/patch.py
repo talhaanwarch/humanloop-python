@@ -466,7 +466,7 @@ class Update(BaseApi):
         directory_id: typing.Optional[str] = None,
         validate: bool = False,
         **kwargs,
-    ):
+    ) -> ProjectResponsePydantic:
         raw_response = await self.raw.aupdate(
             id=id,
             name=name,
@@ -490,7 +490,7 @@ class Update(BaseApi):
         positive_labels: typing.Optional[typing.List[PositiveLabel]] = None,
         directory_id: typing.Optional[str] = None,
         validate: bool = False,
-    ):
+    ) -> ProjectResponsePydantic:
         raw_response = self.raw.update(
             id=id,
             name=name,

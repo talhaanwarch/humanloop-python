@@ -385,7 +385,7 @@ class Delete(BaseApi):
         id: typing.Optional[typing.List[str]] = None,
         validate: bool = False,
         **kwargs,
-    ):
+    ) -> None:
         raw_response = await self.raw.adelete(
             id=id,
             **kwargs,
@@ -396,7 +396,7 @@ class Delete(BaseApi):
         self,
         id: typing.Optional[typing.List[str]] = None,
         validate: bool = False,
-    ):
+    ) -> None:
         raw_response = self.raw.delete(
             id=id,
         )

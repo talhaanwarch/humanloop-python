@@ -455,7 +455,7 @@ class LogResult(BaseApi):
         error: typing.Optional[str] = None,
         validate: bool = False,
         **kwargs,
-    ):
+    ) -> EvaluationResultResponsePydantic:
         raw_response = await self.raw.alog_result(
             log_id=log_id,
             evaluator_id=evaluator_id,
@@ -477,7 +477,7 @@ class LogResult(BaseApi):
         result: typing.Optional[typing.Union[bool, int, typing.Union[int, float]]] = None,
         error: typing.Optional[str] = None,
         validate: bool = False,
-    ):
+    ) -> EvaluationResultResponsePydantic:
         raw_response = self.raw.log_result(
             log_id=log_id,
             evaluator_id=evaluator_id,

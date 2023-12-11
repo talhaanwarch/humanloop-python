@@ -353,7 +353,7 @@ class Delete(BaseApi):
         body: DatapointsDeleteRequest,
         validate: bool = False,
         **kwargs,
-    ):
+    ) -> None:
         raw_response = await self.raw.adelete(
             body=body,
             **kwargs,
@@ -364,7 +364,7 @@ class Delete(BaseApi):
         self,
         body: DatapointsDeleteRequest,
         validate: bool = False,
-    ):
+    ) -> None:
         raw_response = self.raw.delete(
             body=body,
         )

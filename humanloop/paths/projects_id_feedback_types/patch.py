@@ -429,7 +429,7 @@ class UpdateFeedbackTypes(BaseApi):
         id: str,
         validate: bool = False,
         **kwargs,
-    ):
+    ) -> FeedbackTypesPydantic:
         raw_response = await self.raw.aupdate_feedback_types(
             body=body,
             id=id,
@@ -445,7 +445,7 @@ class UpdateFeedbackTypes(BaseApi):
         body: ProjectsUpdateFeedbackTypesRequest,
         id: str,
         validate: bool = False,
-    ):
+    ) -> FeedbackTypesPydantic:
         raw_response = self.raw.update_feedback_types(
             body=body,
             id=id,

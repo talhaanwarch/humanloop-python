@@ -464,7 +464,7 @@ class Update(BaseApi):
         config_ids_to_deregister: typing.Optional[UpdateExperimentRequestConfigIdsToDeregister] = None,
         validate: bool = False,
         **kwargs,
-    ):
+    ) -> ExperimentResponsePydantic:
         raw_response = await self.raw.aupdate(
             experiment_id=experiment_id,
             name=name,
@@ -486,7 +486,7 @@ class Update(BaseApi):
         config_ids_to_register: typing.Optional[UpdateExperimentRequestConfigIdsToRegister] = None,
         config_ids_to_deregister: typing.Optional[UpdateExperimentRequestConfigIdsToDeregister] = None,
         validate: bool = False,
-    ):
+    ) -> ExperimentResponsePydantic:
         raw_response = self.raw.update(
             experiment_id=experiment_id,
             name=name,

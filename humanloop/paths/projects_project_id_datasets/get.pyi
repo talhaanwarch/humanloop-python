@@ -360,7 +360,7 @@ class ListAllForProject(BaseApi):
         project_id: str,
         validate: bool = False,
         **kwargs,
-    ):
+    ) -> DatasetsListAllForProjectResponsePydantic:
         raw_response = await self.raw.alist_all_for_project(
             project_id=project_id,
             **kwargs,
@@ -374,7 +374,7 @@ class ListAllForProject(BaseApi):
         self,
         project_id: str,
         validate: bool = False,
-    ):
+    ) -> DatasetsListAllForProjectResponsePydantic:
         raw_response = self.raw.list_all_for_project(
             project_id=project_id,
         )

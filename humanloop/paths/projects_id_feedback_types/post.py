@@ -453,7 +453,7 @@ class CreateFeedbackType(BaseApi):
         _class: typing.Optional[FeedbackClass] = None,
         validate: bool = False,
         **kwargs,
-    ):
+    ) -> FeedbackTypeModelPydantic:
         raw_response = await self.raw.acreate_feedback_type(
             type=type,
             id=id,
@@ -473,7 +473,7 @@ class CreateFeedbackType(BaseApi):
         values: typing.Optional[typing.List[FeedbackLabelRequest]] = None,
         _class: typing.Optional[FeedbackClass] = None,
         validate: bool = False,
-    ):
+    ) -> FeedbackTypeModelPydantic:
         raw_response = self.raw.create_feedback_type(
             type=type,
             id=id,

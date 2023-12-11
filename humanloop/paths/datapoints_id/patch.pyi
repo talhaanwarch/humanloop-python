@@ -447,7 +447,7 @@ class Update(BaseApi):
         target: typing.Optional[UpdateDatapointRequestTarget] = None,
         validate: bool = False,
         **kwargs,
-    ):
+    ) -> DatapointResponsePydantic:
         raw_response = await self.raw.aupdate(
             id=id,
             inputs=inputs,
@@ -467,7 +467,7 @@ class Update(BaseApi):
         messages: typing.Optional[typing.List[ChatMessage]] = None,
         target: typing.Optional[UpdateDatapointRequestTarget] = None,
         validate: bool = False,
-    ):
+    ) -> DatapointResponsePydantic:
         raw_response = self.raw.update(
             id=id,
             inputs=inputs,

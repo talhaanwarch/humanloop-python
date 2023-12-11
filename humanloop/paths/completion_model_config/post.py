@@ -502,7 +502,7 @@ class CreateModelConfig(BaseApi):
         user: typing.Optional[str] = None,
         validate: bool = False,
         **kwargs,
-    ):
+    ) -> CompletionResponsePydantic:
         raw_response = await self.raw.acreate_model_config(
             model_config_id=model_config_id,
             project=project,
@@ -550,7 +550,7 @@ class CreateModelConfig(BaseApi):
         seed: typing.Optional[int] = None,
         user: typing.Optional[str] = None,
         validate: bool = False,
-    ):
+    ) -> CompletionResponsePydantic:
         raw_response = self.raw.create_model_config(
             model_config_id=model_config_id,
             project=project,

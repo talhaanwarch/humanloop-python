@@ -448,7 +448,7 @@ class Export(BaseApi):
         size: typing.Optional[int] = None,
         validate: bool = False,
         **kwargs,
-    ):
+    ) -> PaginatedDataLogResponsePydantic:
         raw_response = await self.raw.aexport(
             id=id,
             page=page,
@@ -466,7 +466,7 @@ class Export(BaseApi):
         page: typing.Optional[int] = None,
         size: typing.Optional[int] = None,
         validate: bool = False,
-    ):
+    ) -> PaginatedDataLogResponsePydantic:
         raw_response = self.raw.export(
             id=id,
             page=page,

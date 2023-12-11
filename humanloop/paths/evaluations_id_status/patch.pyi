@@ -425,7 +425,7 @@ class UpdateStatus(BaseApi):
         id: str,
         validate: bool = False,
         **kwargs,
-    ):
+    ) -> EvaluationResponsePydantic:
         raw_response = await self.raw.aupdate_status(
             status=status,
             id=id,
@@ -441,7 +441,7 @@ class UpdateStatus(BaseApi):
         status: EvaluationStatus,
         id: str,
         validate: bool = False,
-    ):
+    ) -> EvaluationResponsePydantic:
         raw_response = self.raw.update_status(
             status=status,
             id=id,

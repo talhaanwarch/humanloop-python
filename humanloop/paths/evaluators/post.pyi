@@ -414,7 +414,7 @@ class Create(BaseApi):
         model_config: typing.Optional[ModelConfigCompletionRequest] = None,
         validate: bool = False,
         **kwargs,
-    ):
+    ) -> EvaluatorResponsePydantic:
         raw_response = await self.raw.acreate(
             description=description,
             name=name,
@@ -440,7 +440,7 @@ class Create(BaseApi):
         code: typing.Optional[str] = None,
         model_config: typing.Optional[ModelConfigCompletionRequest] = None,
         validate: bool = False,
-    ):
+    ) -> EvaluatorResponsePydantic:
         raw_response = self.raw.create(
             description=description,
             name=name,

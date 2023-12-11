@@ -439,7 +439,7 @@ class ListAllForProject(BaseApi):
         evaluator_aggregates: typing.Optional[bool] = None,
         validate: bool = False,
         **kwargs,
-    ):
+    ) -> EvaluationsGetForProjectResponsePydantic:
         raw_response = await self.raw.alist_all_for_project(
             project_id=project_id,
             evaluator_aggregates=evaluator_aggregates,
@@ -455,7 +455,7 @@ class ListAllForProject(BaseApi):
         project_id: str,
         evaluator_aggregates: typing.Optional[bool] = None,
         validate: bool = False,
-    ):
+    ) -> EvaluationsGetForProjectResponsePydantic:
         raw_response = self.raw.list_all_for_project(
             project_id=project_id,
             evaluator_aggregates=evaluator_aggregates,

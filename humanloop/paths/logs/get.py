@@ -480,7 +480,7 @@ class List(BaseApi):
         page: typing.Optional[int] = None,
         validate: bool = False,
         **kwargs,
-    ):
+    ) -> PaginatedDataLogResponsePydantic:
         raw_response = await self.raw.alist(
             project_id=project_id,
             search=search,
@@ -506,7 +506,7 @@ class List(BaseApi):
         size: typing.Optional[int] = None,
         page: typing.Optional[int] = None,
         validate: bool = False,
-    ):
+    ) -> PaginatedDataLogResponsePydantic:
         raw_response = self.raw.list(
             project_id=project_id,
             search=search,

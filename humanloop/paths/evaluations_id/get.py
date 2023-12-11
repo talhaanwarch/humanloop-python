@@ -439,7 +439,7 @@ class Get(BaseApi):
         evaluator_aggregates: typing.Optional[bool] = None,
         validate: bool = False,
         **kwargs,
-    ):
+    ) -> EvaluationResponsePydantic:
         raw_response = await self.raw.aget(
             id=id,
             evaluator_aggregates=evaluator_aggregates,
@@ -455,7 +455,7 @@ class Get(BaseApi):
         id: str,
         evaluator_aggregates: typing.Optional[bool] = None,
         validate: bool = False,
-    ):
+    ) -> EvaluationResponsePydantic:
         raw_response = self.raw.get(
             id=id,
             evaluator_aggregates=evaluator_aggregates,

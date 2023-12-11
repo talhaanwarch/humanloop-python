@@ -493,7 +493,7 @@ class CreateExperiment(BaseApi):
         user: typing.Optional[str] = None,
         validate: bool = False,
         **kwargs,
-    ):
+    ) -> CompletionResponsePydantic:
         raw_response = await self.raw.acreate_experiment(
             experiment_id=experiment_id,
             project=project,
@@ -541,7 +541,7 @@ class CreateExperiment(BaseApi):
         seed: typing.Optional[int] = None,
         user: typing.Optional[str] = None,
         validate: bool = False,
-    ):
+    ) -> CompletionResponsePydantic:
         raw_response = self.raw.create_experiment(
             experiment_id=experiment_id,
             project=project,

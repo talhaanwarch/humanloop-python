@@ -461,7 +461,7 @@ class Create(BaseApi):
         set_active: typing.Optional[bool] = None,
         validate: bool = False,
         **kwargs,
-    ):
+    ) -> ExperimentResponsePydantic:
         raw_response = await self.raw.acreate(
             name=name,
             positive_labels=positive_labels,
@@ -483,7 +483,7 @@ class Create(BaseApi):
         config_ids: typing.Optional[CreateExperimentRequestConfigIds] = None,
         set_active: typing.Optional[bool] = None,
         validate: bool = False,
-    ):
+    ) -> ExperimentResponsePydantic:
         raw_response = self.raw.create(
             name=name,
             positive_labels=positive_labels,

@@ -354,7 +354,7 @@ class Deserialize(BaseApi):
         config: str,
         validate: bool = False,
         **kwargs,
-    ):
+    ) -> ModelConfigResponsePydantic:
         raw_response = await self.raw.adeserialize(
             config=config,
             **kwargs,
@@ -368,7 +368,7 @@ class Deserialize(BaseApi):
         self,
         config: str,
         validate: bool = False,
-    ):
+    ) -> ModelConfigResponsePydantic:
         raw_response = self.raw.deserialize(
             config=config,
         )

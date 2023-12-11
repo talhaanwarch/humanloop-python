@@ -502,7 +502,7 @@ class CreateDeployed(BaseApi):
         environment: typing.Optional[str] = None,
         validate: bool = False,
         **kwargs,
-    ):
+    ) -> CompletionResponsePydantic:
         raw_response = await self.raw.acreate_deployed(
             project=project,
             project_id=project_id,
@@ -550,7 +550,7 @@ class CreateDeployed(BaseApi):
         user: typing.Optional[str] = None,
         environment: typing.Optional[str] = None,
         validate: bool = False,
-    ):
+    ) -> CompletionResponsePydantic:
         raw_response = self.raw.create_deployed(
             project=project,
             project_id=project_id,

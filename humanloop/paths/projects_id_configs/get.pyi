@@ -430,7 +430,7 @@ class ListConfigs(BaseApi):
         evaluation_aggregates: typing.Optional[bool] = None,
         validate: bool = False,
         **kwargs,
-    ):
+    ) -> ProjectsGetConfigsResponsePydantic:
         raw_response = await self.raw.alist_configs(
             id=id,
             evaluation_aggregates=evaluation_aggregates,
@@ -446,7 +446,7 @@ class ListConfigs(BaseApi):
         id: str,
         evaluation_aggregates: typing.Optional[bool] = None,
         validate: bool = False,
-    ):
+    ) -> ProjectsGetConfigsResponsePydantic:
         raw_response = self.raw.list_configs(
             id=id,
             evaluation_aggregates=evaluation_aggregates,

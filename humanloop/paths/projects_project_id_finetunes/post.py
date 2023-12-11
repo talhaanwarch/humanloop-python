@@ -469,7 +469,7 @@ class Create(BaseApi):
         provider_api_keys: typing.Optional[ProviderApiKeys] = None,
         validate: bool = False,
         **kwargs,
-    ):
+    ) -> FinetuneResponsePydantic:
         raw_response = await self.raw.acreate(
             name=name,
             dataset_id=dataset_id,
@@ -493,7 +493,7 @@ class Create(BaseApi):
         metadata: typing.Optional[typing.Dict[str, typing.Union[bool, date, datetime, dict, float, int, list, str, None]]] = None,
         provider_api_keys: typing.Optional[ProviderApiKeys] = None,
         validate: bool = False,
-    ):
+    ) -> FinetuneResponsePydantic:
         raw_response = self.raw.create(
             name=name,
             dataset_id=dataset_id,

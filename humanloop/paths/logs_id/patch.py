@@ -447,7 +447,7 @@ class Update(BaseApi):
         duration: typing.Optional[typing.Union[int, float]] = None,
         validate: bool = False,
         **kwargs,
-    ):
+    ) -> LogResponsePydantic:
         raw_response = await self.raw.aupdate(
             id=id,
             output=output,
@@ -467,7 +467,7 @@ class Update(BaseApi):
         error: typing.Optional[str] = None,
         duration: typing.Optional[typing.Union[int, float]] = None,
         validate: bool = False,
-    ):
+    ) -> LogResponsePydantic:
         raw_response = self.raw.update(
             id=id,
             output=output,

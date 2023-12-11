@@ -430,7 +430,7 @@ class DeactivateExperiment(BaseApi):
         environment: typing.Optional[str] = None,
         validate: bool = False,
         **kwargs,
-    ):
+    ) -> ProjectResponsePydantic:
         raw_response = await self.raw.adeactivate_experiment(
             id=id,
             environment=environment,
@@ -446,7 +446,7 @@ class DeactivateExperiment(BaseApi):
         id: str,
         environment: typing.Optional[str] = None,
         validate: bool = False,
-    ):
+    ) -> ProjectResponsePydantic:
         raw_response = self.raw.deactivate_experiment(
             id=id,
             environment=environment,

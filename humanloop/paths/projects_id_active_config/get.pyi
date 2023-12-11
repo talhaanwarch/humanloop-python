@@ -430,7 +430,7 @@ class GetActiveConfig(BaseApi):
         environment: typing.Optional[str] = None,
         validate: bool = False,
         **kwargs,
-    ):
+    ) -> GetModelConfigResponsePydantic:
         raw_response = await self.raw.aget_active_config(
             id=id,
             environment=environment,
@@ -446,7 +446,7 @@ class GetActiveConfig(BaseApi):
         id: str,
         environment: typing.Optional[str] = None,
         validate: bool = False,
-    ):
+    ) -> GetModelConfigResponsePydantic:
         raw_response = self.raw.get_active_config(
             id=id,
             environment=environment,

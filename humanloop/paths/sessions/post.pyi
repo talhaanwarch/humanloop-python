@@ -292,7 +292,7 @@ class Create(BaseApi):
         self,
         validate: bool = False,
         **kwargs,
-    ):
+    ) -> CreateSessionResponsePydantic:
         raw_response = await self.raw.acreate(
             **kwargs,
         )
@@ -304,7 +304,7 @@ class Create(BaseApi):
     def create(
         self,
         validate: bool = False,
-    ):
+    ) -> CreateSessionResponsePydantic:
         raw_response = self.raw.create(
         )
         if validate:

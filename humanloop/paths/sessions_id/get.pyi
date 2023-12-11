@@ -360,7 +360,7 @@ class Get(BaseApi):
         id: str,
         validate: bool = False,
         **kwargs,
-    ):
+    ) -> SessionResponsePydantic:
         raw_response = await self.raw.aget(
             id=id,
             **kwargs,
@@ -374,7 +374,7 @@ class Get(BaseApi):
         self,
         id: str,
         validate: bool = False,
-    ):
+    ) -> SessionResponsePydantic:
         raw_response = self.raw.get(
             id=id,
         )

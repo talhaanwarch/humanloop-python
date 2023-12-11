@@ -518,7 +518,7 @@ class CreateModelConfig(BaseApi):
         response_format: typing.Optional[ResponseFormat] = None,
         validate: bool = False,
         **kwargs,
-    ):
+    ) -> ChatResponsePydantic:
         raw_response = await self.raw.acreate_model_config(
             messages=messages,
             model_config_id=model_config_id,
@@ -570,7 +570,7 @@ class CreateModelConfig(BaseApi):
         seed: typing.Optional[int] = None,
         response_format: typing.Optional[ResponseFormat] = None,
         validate: bool = False,
-    ):
+    ) -> ChatResponsePydantic:
         raw_response = self.raw.create_model_config(
             messages=messages,
             model_config_id=model_config_id,

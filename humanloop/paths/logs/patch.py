@@ -450,7 +450,7 @@ class UpdateByRef(BaseApi):
         duration: typing.Optional[typing.Union[int, float]] = None,
         validate: bool = False,
         **kwargs,
-    ):
+    ) -> LogResponsePydantic:
         raw_response = await self.raw.aupdate_by_ref(
             reference_id=reference_id,
             output=output,
@@ -470,7 +470,7 @@ class UpdateByRef(BaseApi):
         error: typing.Optional[str] = None,
         duration: typing.Optional[typing.Union[int, float]] = None,
         validate: bool = False,
-    ):
+    ) -> LogResponsePydantic:
         raw_response = self.raw.update_by_ref(
             reference_id=reference_id,
             output=output,
