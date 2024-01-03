@@ -6,7 +6,6 @@
 
 
 [![PyPI](https://img.shields.io/badge/PyPI-v0.6.0rc.19-blue)](https://pypi.org/project/humanloop/0.6.0-rc.19)
-[![GitHub last commit](https://img.shields.io/github/last-commit/humanloop/humanloop-python.svg)](https://github.com/humanloop/humanloop-python/commits)
 [![README.md](https://img.shields.io/badge/README-Click%20Here-green)](https://github.com/humanloop/humanloop-python#readme)
 
 </div>
