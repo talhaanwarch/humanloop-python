@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "humanloop"
-version = "0.7.9"
+version = "0.7.10"
 description = "Client for Humanloop API"
 authors = ["Konfig <engineering@konfigthis.com>"]
 license = "MIT"
