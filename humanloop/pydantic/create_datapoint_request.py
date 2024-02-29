@@ -26,3 +26,5 @@ class CreateDatapointRequest(BaseModel):
     messages: typing.Optional[typing.List[ChatMessageWithToolCall]] = Field(None, alias='messages')
 
     target: typing.Optional[CreateDatapointRequestTarget] = Field(None, alias='target')
+    class Config:
+        arbitrary_types_allowed = True

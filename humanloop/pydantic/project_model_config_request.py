@@ -80,3 +80,5 @@ class ProjectModelConfigRequest(BaseModel):
     endpoint: typing.Optional[ModelEndpoints] = Field(None, alias='endpoint')
 
     tools: typing.Optional[ProjectModelConfigRequestTools] = Field(None, alias='tools')
+    class Config:
+        arbitrary_types_allowed = True

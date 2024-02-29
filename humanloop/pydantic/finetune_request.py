@@ -33,3 +33,5 @@ class FinetuneRequest(BaseModel):
 
     # API keys required by each provider to make API calls. The API keys provided here are not stored by Humanloop. If not specified here, Humanloop will fall back to the key saved to your organization.
     provider_api_keys: typing.Optional[ProviderApiKeys] = Field(None, alias='provider_api_keys')
+    class Config:
+        arbitrary_types_allowed = True

@@ -51,3 +51,5 @@ class CompletionResponse(BaseModel):
 
     # ID of the session if it belongs to one.
     session_id: typing.Optional[str] = Field(None, alias='session_id')
+    class Config:
+        arbitrary_types_allowed = True

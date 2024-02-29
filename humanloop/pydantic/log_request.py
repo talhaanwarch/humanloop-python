@@ -101,3 +101,5 @@ class LogRequest(BaseModel):
 
     # Raw response received the provider.
     provider_response: typing.Optional[typing.Dict[str, typing.Union[bool, date, datetime, dict, float, int, list, str, None]]] = Field(None, alias='provider_response')
+    class Config:
+        arbitrary_types_allowed = True

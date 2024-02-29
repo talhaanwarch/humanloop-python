@@ -56,3 +56,5 @@ class ChatDataResponse(BaseModel):
 
     # Deprecated: Please use tool_calls field within the output_message.JSON definition of the tools to call and the corresponding argument values. Will be populated when finish_reason='tool_call'.
     tool_calls: typing.Optional[typing.List[ToolCall]] = Field(None, alias='tool_calls')
+    class Config:
+        arbitrary_types_allowed = True

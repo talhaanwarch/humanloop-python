@@ -41,3 +41,5 @@ class DataResponse(BaseModel):
 
     # Results of any tools run during the generation.
     tool_results: typing.Optional[typing.List[ToolResultResponse]] = Field(None, alias='tool_results')
+    class Config:
+        arbitrary_types_allowed = True

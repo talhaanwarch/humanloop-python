@@ -22,3 +22,5 @@ class FeedbackNumberAggregate(BaseModel):
 
     # The mean of all feedback values.
     mean: typing.Union[int, float] = Field(alias='mean')
+    class Config:
+        arbitrary_types_allowed = True

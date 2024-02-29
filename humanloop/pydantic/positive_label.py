@@ -20,3 +20,5 @@ class PositiveLabel(BaseModel):
     type: str = Field(alias='type')
 
     value: str = Field(alias='value')
+    class Config:
+        arbitrary_types_allowed = True

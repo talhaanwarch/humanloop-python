@@ -53,3 +53,5 @@ class EvaluatorResponse(BaseModel):
 
     # The project where the evaluator logs are stored.
     logging_project: typing.Optional['ProjectResponse'] = Field(None, alias='logging_project')
+    class Config:
+        arbitrary_types_allowed = True

@@ -30,3 +30,5 @@ class EvaluationResultResponse(BaseModel):
     value: typing.Optional[typing.Union[bool, typing.Union[int, float]]] = Field(None, alias='value')
 
     error: typing.Optional[str] = Field(None, alias='error')
+    class Config:
+        arbitrary_types_allowed = True

@@ -40,3 +40,5 @@ class ToolConfigRequest(BaseModel):
 
     # If is_preset = true, this is the name of the preset tool on Humanloop. This is used as the key to look up the Humanloop runtime of the tool
     preset_name: typing.Optional[str] = Field(None, alias='preset_name')
+    class Config:
+        arbitrary_types_allowed = True

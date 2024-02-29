@@ -25,3 +25,5 @@ class PaginatedDataProjectResponse(BaseModel):
     size: int = Field(alias='size')
 
     total: int = Field(alias='total')
+    class Config:
+        arbitrary_types_allowed = True

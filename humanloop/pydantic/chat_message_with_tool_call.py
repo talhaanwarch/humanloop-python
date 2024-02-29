@@ -39,3 +39,5 @@ class ChatMessageWithToolCall(BaseModel):
 
     # NB: Deprecated in favour of tool_calls. A tool call requested by the assistant.
     tool_call: typing.Optional[FunctionTool] = Field(None, alias='tool_call')
+    class Config:
+        arbitrary_types_allowed = True

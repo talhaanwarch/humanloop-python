@@ -20,3 +20,5 @@ class FunctionTool(BaseModel):
     name: str = Field(alias='name')
 
     arguments: typing.Optional[str] = Field(None, alias='arguments')
+    class Config:
+        arbitrary_types_allowed = True

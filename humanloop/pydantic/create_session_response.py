@@ -19,3 +19,5 @@ from pydantic import BaseModel, Field, RootModel
 class CreateSessionResponse(BaseModel):
     # String ID of session. Starts with `sesh_`.
     id: str = Field(alias='id')
+    class Config:
+        arbitrary_types_allowed = True

@@ -19,3 +19,5 @@ from humanloop.pydantic.add_evaluators_request_evaluator_ids import AddEvaluator
 
 class AddEvaluatorsRequest(BaseModel):
     evaluator_ids: AddEvaluatorsRequestEvaluatorIds = Field(alias='evaluator_ids')
+    class Config:
+        arbitrary_types_allowed = True

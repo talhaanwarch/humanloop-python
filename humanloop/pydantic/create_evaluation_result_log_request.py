@@ -28,3 +28,5 @@ class CreateEvaluationResultLogRequest(BaseModel):
 
     # An error that occurred during evaluation.
     error: typing.Optional[str] = Field(None, alias='error')
+    class Config:
+        arbitrary_types_allowed = True

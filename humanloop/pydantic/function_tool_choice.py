@@ -18,3 +18,5 @@ from pydantic import BaseModel, Field, RootModel
 
 class FunctionToolChoice(BaseModel):
     name: str = Field(alias='name')
+    class Config:
+        arbitrary_types_allowed = True

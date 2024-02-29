@@ -35,3 +35,5 @@ class DatapointResponse(BaseModel):
     target: typing.Optional[DatapointResponseTarget] = Field(None, alias='target')
 
     source_project_data_id: typing.Optional[str] = Field(None, alias='source_project_data_id')
+    class Config:
+        arbitrary_types_allowed = True

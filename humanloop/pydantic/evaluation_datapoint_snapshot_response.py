@@ -25,3 +25,5 @@ class EvaluationDatapointSnapshotResponse(BaseModel):
     evaluation_results: typing.List[EvaluationResultResponse] = Field(alias='evaluation_results')
 
     log: typing.Optional[LogResponse] = Field(None, alias='log')
+    class Config:
+        arbitrary_types_allowed = True

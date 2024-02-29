@@ -51,3 +51,5 @@ class GetModelConfigResponse(BaseModel):
 
     # ID of environment to reference in subsequent log calls.
     environment_id: typing.Optional[str] = Field(None, alias='environment_id')
+    class Config:
+        arbitrary_types_allowed = True

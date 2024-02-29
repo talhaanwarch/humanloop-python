@@ -24,3 +24,5 @@ class ProjectModelConfigFeedbackStatsResponse(BaseModel):
     feedback_value: str = Field(alias='feedback_value')
 
     feedback_count: int = Field(alias='feedback_count')
+    class Config:
+        arbitrary_types_allowed = True

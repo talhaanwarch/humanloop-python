@@ -23,3 +23,5 @@ class CreateEvaluationLogRequest(BaseModel):
 
     # The log generated for the datapoint.
     log: LogRequest = Field(alias='log')
+    class Config:
+        arbitrary_types_allowed = True

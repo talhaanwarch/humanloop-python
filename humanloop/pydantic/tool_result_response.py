@@ -24,3 +24,5 @@ class ToolResultResponse(BaseModel):
     signature: str = Field(alias='signature')
 
     result: str = Field(alias='result')
+    class Config:
+        arbitrary_types_allowed = True

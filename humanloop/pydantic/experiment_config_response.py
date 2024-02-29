@@ -42,3 +42,5 @@ class ExperimentConfigResponse(BaseModel):
 
     # The spread of performance of the model config.
     spread: typing.Optional[typing.Union[int, float]] = Field(None, alias='spread')
+    class Config:
+        arbitrary_types_allowed = True

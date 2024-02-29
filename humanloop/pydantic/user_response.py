@@ -28,3 +28,5 @@ class UserResponse(BaseModel):
 
     # The user's full name.
     full_name: typing.Optional[str] = Field(None, alias='full_name')
+    class Config:
+        arbitrary_types_allowed = True

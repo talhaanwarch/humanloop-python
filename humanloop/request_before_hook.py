@@ -11,6 +11,7 @@
 
 import typing
 from urllib3._collections import HTTPHeaderDict
+from humanloop.operation_parameter_map import operation_parameter_map
 from humanloop.configuration import Configuration
 from humanloop.type.provider_api_keys import ProviderApiKeys
 
@@ -19,11 +20,18 @@ def request_before_hook(
     resource_path: str,
     method: str,
     configuration: Configuration,
+    path_template: str,
     headers: typing.Optional[HTTPHeaderDict] = None,
     body: typing.Any = None,
     fields: typing.Optional[typing.Tuple[typing.Tuple[str, str], ...]] = None,
     auth_settings: typing.Optional[typing.List[str]] = None,
+    **kwargs: typing.Any,
 ):
+    parameters = operation_parameter_map["{}-{}".format(path_template, method)]["parameters"]
+    # if parameter does not exist with name "provider_api_keys", return
+    if "provider_api_keys" not in map(lambda x: x["name"], parameters):
+        return
+
     if not isinstance(body, dict):
         return
     api_keys: ProviderApiKeys = (

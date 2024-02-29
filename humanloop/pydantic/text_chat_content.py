@@ -21,3 +21,5 @@ class TextChatContent(BaseModel):
 
     # The message's text content.
     text: str = Field(alias='text')
+    class Config:
+        arbitrary_types_allowed = True

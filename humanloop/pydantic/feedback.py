@@ -32,3 +32,5 @@ class Feedback(BaseModel):
 
     # User defined timestamp for when the feedback was created. 
     created_at: typing.Optional[datetime] = Field(None, alias='created_at')
+    class Config:
+        arbitrary_types_allowed = True

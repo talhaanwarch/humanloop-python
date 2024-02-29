@@ -45,3 +45,5 @@ class ExperimentResponse(BaseModel):
 
     # List of configs associated to the experiment.
     configs: typing.Optional[typing.List[ExperimentConfigResponse]] = Field(None, alias='configs')
+    class Config:
+        arbitrary_types_allowed = True

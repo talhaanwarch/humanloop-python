@@ -22,3 +22,5 @@ class CategoricalFeedbackLabel(BaseModel):
 
     # Whether the feedback sentiment is positive or negative.
     sentiment: LabelSentiment = Field(alias='sentiment')
+    class Config:
+        arbitrary_types_allowed = True

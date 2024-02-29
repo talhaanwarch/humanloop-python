@@ -81,3 +81,5 @@ class ModelConfigResponse(BaseModel):
 
     # The provider model endpoint used.
     endpoint: typing.Optional[ModelEndpoints] = Field(None, alias='endpoint')
+    class Config:
+        arbitrary_types_allowed = True

@@ -29,3 +29,5 @@ class CreateExperimentRequest(BaseModel):
 
     # Whether to set the created project as the project's active experiment.
     set_active: typing.Optional[bool] = Field(None, alias='set_active')
+    class Config:
+        arbitrary_types_allowed = True

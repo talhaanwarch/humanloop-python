@@ -24,3 +24,5 @@ class DashboardConfiguration(BaseModel):
     time_range_days: int = Field(alias='time_range_days')
 
     model_config_ids_: DashboardConfigurationModelConfigIds = Field(alias='model_config_ids')
+    class Config:
+        arbitrary_types_allowed = True

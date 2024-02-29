@@ -25,3 +25,5 @@ class Usage(BaseModel):
 
     # Total number of tokens used by the prompt and generation combined.
     total_tokens: int = Field(alias='total_tokens')
+    class Config:
+        arbitrary_types_allowed = True

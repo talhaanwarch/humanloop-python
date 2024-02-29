@@ -18,3 +18,5 @@ from pydantic import BaseModel, Field, RootModel
 
 class ResponseFormat(BaseModel):
     type: Literal["json_object"] = Field(alias='type')
+    class Config:
+        arbitrary_types_allowed = True

@@ -86,3 +86,5 @@ class ChatDeployedRequest(BaseModel):
 
     # The environment name used to create a chat response. If not specified, the default environment will be used.
     environment: typing.Optional[str] = Field(None, alias='environment')
+    class Config:
+        arbitrary_types_allowed = True

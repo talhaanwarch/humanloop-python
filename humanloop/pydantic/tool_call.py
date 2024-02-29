@@ -24,3 +24,5 @@ class ToolCall(BaseModel):
     type: ToolType = Field(alias='type')
 
     function: FunctionTool = Field(alias='function')
+    class Config:
+        arbitrary_types_allowed = True

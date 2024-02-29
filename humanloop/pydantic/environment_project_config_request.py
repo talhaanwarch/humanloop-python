@@ -26,3 +26,5 @@ class EnvironmentProjectConfigRequest(BaseModel):
 
     # List of environments to associate with the model config.
     environments: typing.Optional[typing.List[EnvironmentRequest]] = Field(None, alias='environments')
+    class Config:
+        arbitrary_types_allowed = True

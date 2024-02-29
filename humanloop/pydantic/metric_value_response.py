@@ -22,3 +22,5 @@ class MetricValueResponse(BaseModel):
     metric_name: str = Field(alias='metric_name')
 
     metric_value: typing.Union[int, float] = Field(alias='metric_value')
+    class Config:
+        arbitrary_types_allowed = True

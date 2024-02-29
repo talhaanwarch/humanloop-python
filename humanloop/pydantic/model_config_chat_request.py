@@ -68,3 +68,5 @@ class ModelConfigChatRequest(BaseModel):
     chat_template: typing.Optional[typing.List[ChatMessageWithToolCall]] = Field(None, alias='chat_template')
 
     tools: typing.Optional[ModelConfigChatRequestTools] = Field(None, alias='tools')
+    class Config:
+        arbitrary_types_allowed = True

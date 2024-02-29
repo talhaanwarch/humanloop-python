@@ -58,3 +58,5 @@ class ProjectResponse(BaseModel):
 
     # String ID of the directory the project belongs to. Starts with `dir_`.
     directory_id: typing.Optional[str] = Field(None, alias='directory_id')
+    class Config:
+        arbitrary_types_allowed = True

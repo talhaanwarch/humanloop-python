@@ -24,3 +24,5 @@ class FeedbackTypeModel(BaseModel):
 
     # The allowed values for categorical feedback types. Not populated for `correction` and `comment`.
     values: typing.Optional[typing.List[CategoricalFeedbackLabel]] = Field(None, alias='values')
+    class Config:
+        arbitrary_types_allowed = True

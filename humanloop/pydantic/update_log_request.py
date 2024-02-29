@@ -25,3 +25,5 @@ class UpdateLogRequest(BaseModel):
 
     # Duration of the logged event in seconds.
     duration: typing.Optional[typing.Union[int, float]] = Field(None, alias='duration')
+    class Config:
+        arbitrary_types_allowed = True

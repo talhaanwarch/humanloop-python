@@ -73,3 +73,5 @@ class ModelConfigRequest(BaseModel):
     tools: typing.Optional[ModelConfigRequestTools] = Field(None, alias='tools')
 
     type: typing.Optional[Literal["model"]] = Field(None, alias='type')
+    class Config:
+        arbitrary_types_allowed = True

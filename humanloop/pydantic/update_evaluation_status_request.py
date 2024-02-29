@@ -20,3 +20,5 @@ from humanloop.pydantic.evaluation_status import EvaluationStatus
 class UpdateEvaluationStatusRequest(BaseModel):
     # The new status of the evaluation.
     status: EvaluationStatus = Field(alias='status')
+    class Config:
+        arbitrary_types_allowed = True

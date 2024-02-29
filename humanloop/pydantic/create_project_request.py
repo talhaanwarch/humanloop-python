@@ -26,3 +26,5 @@ class CreateProjectRequest(BaseModel):
 
     # ID of directory to assign project to. Starts with `dir_`. If not provided, the project will be created in the root directory.
     directory_id: typing.Optional[str] = Field(None, alias='directory_id')
+    class Config:
+        arbitrary_types_allowed = True

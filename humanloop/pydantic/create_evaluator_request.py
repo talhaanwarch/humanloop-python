@@ -41,3 +41,5 @@ class CreateEvaluatorRequest(BaseModel):
 
     # The model configuration used to generate.
     model_config_: typing.Optional[ModelConfigCompletionRequest] = Field(None, alias='model_config')
+    class Config:
+        arbitrary_types_allowed = True

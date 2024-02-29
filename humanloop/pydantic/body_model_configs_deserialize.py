@@ -18,3 +18,5 @@ from pydantic import BaseModel, Field, RootModel
 
 class BodyModelConfigsDeserialize(BaseModel):
     config: str = Field(alias='config')
+    class Config:
+        arbitrary_types_allowed = True

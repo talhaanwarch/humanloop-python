@@ -30,3 +30,5 @@ class ProviderApiKeys(BaseModel):
     openai_azure: typing.Optional[str] = Field(None, alias='openai_azure')
 
     openai_azure_endpoint: typing.Optional[str] = Field(None, alias='openai_azure_endpoint')
+    class Config:
+        arbitrary_types_allowed = True

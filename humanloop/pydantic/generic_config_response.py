@@ -34,3 +34,5 @@ class GenericConfigResponse(BaseModel):
 
     # The user who created the config.
     created_by: typing.Optional[UserResponse] = Field(None, alias='created_by')
+    class Config:
+        arbitrary_types_allowed = True

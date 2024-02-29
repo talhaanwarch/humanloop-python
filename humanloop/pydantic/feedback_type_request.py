@@ -27,3 +27,5 @@ class FeedbackTypeRequest(BaseModel):
 
     # The data type associated to this feedback type; whether it is a 'text'/'select'/'multi_select'. This is optional when updating the default feedback types (i.e. when `type` is 'rating', 'action' or 'issue').
     class_: typing.Optional[FeedbackClass] = Field(None, alias='class')
+    class Config:
+        arbitrary_types_allowed = True

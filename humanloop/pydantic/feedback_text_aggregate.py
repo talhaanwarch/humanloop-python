@@ -19,3 +19,5 @@ from humanloop.pydantic.feedback_type_model import FeedbackTypeModel
 
 class FeedbackTextAggregate(BaseModel):
     feedback_type: FeedbackTypeModel = Field(alias='feedback_type')
+    class Config:
+        arbitrary_types_allowed = True

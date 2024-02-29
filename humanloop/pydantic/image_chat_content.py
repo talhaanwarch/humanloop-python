@@ -22,3 +22,5 @@ class ImageChatContent(BaseModel):
 
     # The message's image content.
     image_url: ImageUrl = Field(alias='image_url')
+    class Config:
+        arbitrary_types_allowed = True

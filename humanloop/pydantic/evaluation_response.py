@@ -43,3 +43,5 @@ class EvaluationResponse(BaseModel):
     evaluator_aggregates: typing.Optional[typing.List[ModelConfigEvaluatorAggregateResponse]] = Field(None, alias='evaluator_aggregates')
 
     feedback_aggregates: typing.Optional[FeedbackAggregateResponse] = Field(None, alias='feedback_aggregates')
+    class Config:
+        arbitrary_types_allowed = True

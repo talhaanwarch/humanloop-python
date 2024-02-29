@@ -45,3 +45,5 @@ class AgentConfigResponse(BaseModel):
 
     # Tools associated with the agent.
     tools: typing.Optional[typing.List[ToolConfigRequest]] = Field(None, alias='tools')
+    class Config:
+        arbitrary_types_allowed = True

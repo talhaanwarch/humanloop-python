@@ -43,3 +43,5 @@ class EnvironmentProjectConfigResponse(BaseModel):
 
     # Display name of experiment.
     experiment_name: typing.Optional[str] = Field(None, alias='experiment_name')
+    class Config:
+        arbitrary_types_allowed = True

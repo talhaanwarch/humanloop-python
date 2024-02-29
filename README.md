@@ -600,7 +600,9 @@ The format of the response. Only type json_object is currently supported for cha
 
 ### `humanloop.chat_deployed`<a id="humanloopchat_deployed"></a>
 
-Get a chat response using the project's active deployment.  The active deployment can be a specific model configuration or an experiment.
+Get a chat response using the project's active deployment.
+
+The active deployment can be a specific model configuration or an experiment.
 
 #### 🛠️ Usage<a id="🛠️-usage"></a>
 
@@ -1184,7 +1186,9 @@ The suffix that comes after a completion of inserted text. Useful for completion
 
 ### `humanloop.complete_deployed`<a id="humanloopcomplete_deployed"></a>
 
-Create a completion using the project's active deployment.  The active deployment can be a specific model configuration or an experiment.
+Create a completion using the project's active deployment.
+
+The active deployment can be a specific model configuration or an experiment.
 
 #### 🛠️ Usage<a id="🛠️-usage"></a>
 
@@ -1624,7 +1628,11 @@ String ID of datapoint. Starts with `evtc_`.
 
 ### `humanloop.datapoints.update`<a id="humanloopdatapointsupdate"></a>
 
-Edit the input, messages and criteria fields of a datapoint. The fields passed in the request are the ones edited.  Passing `null` as a value for a field will delete that field. In order to signify not changing a field, it should be omitted from the request body.
+Edit the input, messages and criteria fields of a datapoint.
+The fields passed in the request are the ones edited.
+
+Passing `null` as a value for a field will delete that field. In order to
+signify not changing a field, it should be omitted from the request body.
 
 #### 🛠️ Usage<a id="🛠️-usage"></a>
 
@@ -2064,7 +2072,24 @@ Whether to include evaluator aggregates in the response.
 
 ### `humanloop.evaluations.list`<a id="humanloopevaluationslist"></a>
 
-Get the evaluations associated with a project.  Sorting and filtering are supported through query params for categorical columns and the `created_at` timestamp.  Sorting is supported for the `dataset`, `config`, `status` and `evaluator-{evaluator_id}` columns. Specify sorting with the `sort` query param, with values `{column}.{ordering}`. E.g. ?sort=dataset.asc&sort=status.desc will yield a multi-column sort. First by dataset then by status.  Filtering is supported for the `id`, `dataset`, `config` and `status` columns.  Specify filtering with the `id_filter`, `dataset_filter`, `config_filter` and `status_filter` query params.  E.g. ?dataset_filter=my_dataset&dataset_filter=my_other_dataset&status_filter=running will only show rows where the dataset is \"my_dataset\" or \"my_other_dataset\", and where the status is \"running\".  An additional date range filter is supported for the `created_at` column. Use the `start_date` and `end_date` query parameters to configure this.
+Get the evaluations associated with a project.
+
+Sorting and filtering are supported through query params for categorical columns
+and the `created_at` timestamp.
+
+Sorting is supported for the `dataset`, `config`, `status` and `evaluator-{evaluator_id}` columns.
+Specify sorting with the `sort` query param, with values `{column}.{ordering}`.
+E.g. ?sort=dataset.asc&sort=status.desc will yield a multi-column sort. First by dataset then by status.
+
+Filtering is supported for the `id`, `dataset`, `config` and `status` columns.
+
+Specify filtering with the `id_filter`, `dataset_filter`, `config_filter` and `status_filter` query params.
+
+E.g. ?dataset_filter=my_dataset&dataset_filter=my_other_dataset&status_filter=running
+will only show rows where the dataset is "my_dataset" or "my_other_dataset", and where the status is "running".
+
+An additional date range filter is supported for the `created_at` column. Use the `start_date` and `end_date`
+query parameters to configure this.
 
 #### 🛠️ Usage<a id="🛠️-usage"></a>
 
@@ -2115,7 +2140,10 @@ Only return evaluations created before this date.
 
 ### `humanloop.evaluations.list_all_for_project`<a id="humanloopevaluationslist_all_for_project"></a>
 
-Get all the evaluations associated with your project.  Deprecated: This is a legacy unpaginated endpoint. Use `/evaluations` instead, with appropriate sorting, filtering and pagination options.
+Get all the evaluations associated with your project.
+
+Deprecated: This is a legacy unpaginated endpoint. Use `/evaluations` instead, with appropriate
+sorting, filtering and pagination options.
 
 #### 🛠️ Usage<a id="🛠️-usage"></a>
 
@@ -2190,7 +2218,9 @@ Number of evaluation results to retrieve.
 
 ### `humanloop.evaluations.log`<a id="humanloopevaluationslog"></a>
 
-Log an external generation to an evaluation run for a datapoint.  The run must have status 'running'.
+Log an external generation to an evaluation run for a datapoint.
+
+The run must have status 'running'.
 
 #### 🛠️ Usage<a id="🛠️-usage"></a>
 
@@ -2236,7 +2266,9 @@ ID of the evaluation run. Starts with `evrun_`.
 
 ### `humanloop.evaluations.result`<a id="humanloopevaluationsresult"></a>
 
-Log an evaluation result to an evaluation run.  The run must have status 'running'. One of `result` or `error` must be provided.
+Log an evaluation result to an evaluation run.
+
+The run must have status 'running'. One of `result` or `error` must be provided.
 
 #### 🛠️ Usage<a id="🛠️-usage"></a>
 
@@ -2290,7 +2322,11 @@ An error that occurred during evaluation.
 
 ### `humanloop.evaluations.update_status`<a id="humanloopevaluationsupdate_status"></a>
 
-Update the status of an evaluation run.  Can only be used to update the status of an evaluation run that uses external or human evaluators. The evaluation must currently have status 'running' if swithcing to completed, or it must have status 'completed' if switching back to 'running'.
+Update the status of an evaluation run.
+
+Can only be used to update the status of an evaluation run that uses external or human evaluators.
+The evaluation must currently have status 'running' if swithcing to completed, or it must have status
+'completed' if switching back to 'running'.
 
 #### 🛠️ Usage<a id="🛠️-usage"></a>
 
@@ -2548,7 +2584,11 @@ The model configuration used to generate.
 
 ### `humanloop.experiments.create`<a id="humanloopexperimentscreate"></a>
 
-Create an experiment for your project.  You can optionally specify IDs of your project's model configs to include in the experiment, along with a set of labels to consider as positive feedback and whether the experiment should be set as active.
+Create an experiment for your project.
+
+You can optionally specify IDs of your project's model configs to include
+in the experiment, along with a set of labels to consider as positive feedback
+and whether the experiment should be set as active.
 
 #### 🛠️ Usage<a id="🛠️-usage"></a>
 
@@ -2690,7 +2730,8 @@ String ID of experiment. Starts with `exp_`.
 
 ### `humanloop.experiments.update`<a id="humanloopexperimentsupdate"></a>
 
-Update your experiment, including registering and de-registering model configs.
+Update your experiment, including registering and de-registering
+model configs.
 
 #### 🛠️ Usage<a id="🛠️-usage"></a>
 
@@ -2897,7 +2938,9 @@ list_all_for_project_response = humanloop.finetunes.list_all_for_project(
 
 ### `humanloop.finetunes.summary`<a id="humanloopfinetunessummary"></a>
 
-Checks data for errors and generates finetune data summary.  Does not actually trigger the finetuning process or persist the data.
+Checks data for errors and generates finetune data summary.
+
+Does not actually trigger the finetuning process or persist the data.
 
 #### 🛠️ Usage<a id="🛠️-usage"></a>
 
@@ -3049,7 +3092,30 @@ String ID of log to return. Starts with `data_`.
 
 ### `humanloop.logs.list`<a id="humanlooplogslist"></a>
 
-Retrieve paginated logs from the server.  Sorting and filtering are supported through query params.  Sorting is supported for the `source`, `model`, `timestamp`, and `feedback-{output_name}` columns. Specify sorting with the `sort` query param, with values `{column}.{ordering}`. E.g. ?sort=source.asc&sort=model.desc will yield a multi-column sort. First by source then by model.  Filtering is supported for the `source`, `model`, `feedback-{output_name}`, `evaluator-{evaluator_external_id}` columns.  Specify filtering with the `source_filter`, `model_filter`, `feedback-{output.name}_filter` and `evaluator-{evaluator_external_id}_filter` query params.  E.g. ?source_filter=AI&source_filter=user_1234&feedback-explicit_filter=good will only show rows where the source is \"AI\" or \"user_1234\", and where the latest feedback for the \"explicit\" output group is \"good\".  An additional date range filter is supported for the `Timestamp` column (i.e. `Log.created_at`). These are supported through the `start_date` and `end_date` query parameters.  Searching is supported for the model inputs and output. Specify a search term with the `search` query param. E.g. ?search=hello%20there will cause a case-insensitive search across model inputs and output.
+Retrieve paginated logs from the server.
+
+Sorting and filtering are supported through query params.
+
+Sorting is supported for the `source`, `model`, `timestamp`, and `feedback-{output_name}` columns.
+Specify sorting with the `sort` query param, with values `{column}.{ordering}`.
+E.g. ?sort=source.asc&sort=model.desc will yield a multi-column sort. First by source then by model.
+
+Filtering is supported for the `source`, `model`, `feedback-{output_name}`,
+`evaluator-{evaluator_external_id}` columns.
+
+Specify filtering with the `source_filter`, `model_filter`, `feedback-{output.name}_filter` and
+`evaluator-{evaluator_external_id}_filter` query params.
+
+E.g. ?source_filter=AI&source_filter=user_1234&feedback-explicit_filter=good
+will only show rows where the source is "AI" or "user_1234", and where the latest feedback for the "explicit" output
+group is "good".
+
+An additional date range filter is supported for the `Timestamp` column (i.e. `Log.created_at`).
+These are supported through the `start_date` and `end_date` query parameters.
+
+Searching is supported for the model inputs and output.
+Specify a search term with the `search` query param.
+E.g. ?search=hello%20there will cause a case-insensitive search across model inputs and output.
 
 #### 🛠️ Usage<a id="🛠️-usage"></a>
 
@@ -3333,7 +3399,10 @@ Duration of the logged event in seconds.
 
 ### `humanloop.logs.update_by_ref`<a id="humanlooplogsupdate_by_ref"></a>
 
-Update a logged datapoint by its reference ID.  The `reference_id` query parameter must be provided, and refers to the `reference_id` of a previously-logged datapoint.
+Update a logged datapoint by its reference ID.
+
+The `reference_id` query parameter must be provided, and refers to the
+`reference_id` of a previously-logged datapoint.
 
 #### 🛠️ Usage<a id="🛠️-usage"></a>
 
@@ -3468,7 +3537,17 @@ String ID of the model config. Starts with `config_`.
 
 ### `humanloop.model_configs.register`<a id="humanloopmodel_configsregister"></a>
 
-Register a model config to a project and optionally add it to an experiment.  If the project name provided does not exist, a new project will be created automatically.  If an experiment name is provided, the specified experiment must already exist. Otherwise, an error will be raised.  If the model config is the first to be associated to the project, it will be set as the active model config.
+Register a model config to a project and optionally add it to an
+experiment.
+
+If the project name provided does not exist, a new project will be created
+automatically.
+
+If an experiment name is provided, the specified experiment must already
+exist. Otherwise, an error will be raised.
+
+If the model config is the first to be associated to the project, it will
+be set as the active model config.
 
 #### 🛠️ Usage<a id="🛠️-usage"></a>
 
@@ -3838,7 +3917,9 @@ The data type associated to this feedback type; whether it is a 'text'/'select'/
 
 ### `humanloop.projects.deactivate_config`<a id="humanloopprojectsdeactivate_config"></a>
 
-Remove the project's active config, if set.  This has no effect if the project does not have an active model config set.
+Remove the project's active config, if set.
+
+This has no effect if the project does not have an active model config set.
 
 #### 🛠️ Usage<a id="🛠️-usage"></a>
 
@@ -3873,7 +3954,9 @@ Name for the environment. E.g. 'production'. If not provided, will delete the ac
 
 ### `humanloop.projects.deactivate_experiment`<a id="humanloopprojectsdeactivate_experiment"></a>
 
-Remove the project's active experiment, if set.  This has no effect if the project does not have an active experiment set.
+Remove the project's active experiment, if set.
+
+This has no effect if the project does not have an active experiment set.
 
 #### 🛠️ Usage<a id="🛠️-usage"></a>
 
@@ -3934,7 +4017,9 @@ String ID of project. Starts with `pr_`.
 
 ### `humanloop.projects.delete_deployed_config`<a id="humanloopprojectsdelete_deployed_config"></a>
 
-Remove the verion deployed to environment.  This has no effect if the project does not have an active version set.
+Remove the verion deployed to environment.
+
+This has no effect if the project does not have an active version set.
 
 #### 🛠️ Usage<a id="🛠️-usage"></a>
 
@@ -3961,7 +4046,9 @@ delete_deployed_config_response = humanloop.projects.delete_deployed_config(
 
 ### `humanloop.projects.deploy_config`<a id="humanloopprojectsdeploy_config"></a>
 
-Deploy a model config to an environment.  If the environment already has a model config deployed, it will be replaced.
+Deploy a model config to an environment.
+
+If the environment already has a model config deployed, it will be replaced.
 
 #### 🛠️ Usage<a id="🛠️-usage"></a>
 
@@ -4011,7 +4098,10 @@ List of environments to associate with the model config.
 
 ### `humanloop.projects.export`<a id="humanloopprojectsexport"></a>
 
-Export all logged datapoints associated to your project.  Results are paginated and sorts the datapoints based on `created_at` in descending order.
+Export all logged datapoints associated to your project.
+
+Results are paginated and sorts the datapoints based on `created_at` in
+descending order.
 
 #### 🛠️ Usage<a id="🛠️-usage"></a>
 
@@ -4081,7 +4171,10 @@ String ID of project. Starts with `pr_`.
 
 ### `humanloop.projects.get_active_config`<a id="humanloopprojectsget_active_config"></a>
 
-Retrieves a config to use to execute your model.  A config will be selected based on the project's active config/experiment settings.
+Retrieves a config to use to execute your model.
+
+A config will be selected based on the project's
+active config/experiment settings.
 
 #### 🛠️ Usage<a id="🛠️-usage"></a>
 
@@ -4234,7 +4327,17 @@ String ID of project. Starts with `pr_`.
 
 ### `humanloop.projects.update`<a id="humanloopprojectsupdate"></a>
 
-Update a specific project.  Set the project's active model config/experiment by passing either `active_experiment_id` or `active_model_config_id`. These will be set to the Default environment unless a list of environments are also passed in specifically detailing which environments to assign the active config or experiment.  Set the feedback labels to be treated as positive user feedback used in calculating top-level project metrics by passing a list of labels in `positive_labels`.
+Update a specific project.
+
+Set the project's active model config/experiment by passing either
+`active_experiment_id` or `active_model_config_id`.
+These will be set to the Default environment unless a list of environments
+are also passed in specifically detailing which environments to assign the
+active config or experiment.
+
+Set the feedback labels to be treated as positive user feedback used in
+calculating top-level project metrics by passing a list of labels in
+`positive_labels`.
 
 #### 🛠️ Usage<a id="🛠️-usage"></a>
 
@@ -4297,7 +4400,13 @@ ID of directory to assign project to. Starts with `dir_`.
 
 ### `humanloop.projects.update_feedback_types`<a id="humanloopprojectsupdate_feedback_types"></a>
 
-Update feedback types.  Allows enabling the available feedback types and setting status of feedback types/categorical values.  This behaves like an upsert; any feedback categorical values that do not already exist in the project will be created.
+Update feedback types.
+
+Allows enabling the available feedback types and setting status of
+feedback types/categorical values.
+
+This behaves like an upsert; any feedback categorical values that do not
+already exist in the project will be created.
 
 #### 🛠️ Usage<a id="🛠️-usage"></a>
 
@@ -4335,7 +4444,9 @@ String ID of project. Starts with `pr_`.
 
 ### `humanloop.sessions.create`<a id="humanloopsessionscreate"></a>
 
-Create a new session.  Returns a session ID that can be used to log datapoints to the session.
+Create a new session.
+
+Returns a session ID that can be used to log datapoints to the session.
 
 #### 🛠️ Usage<a id="🛠️-usage"></a>
 

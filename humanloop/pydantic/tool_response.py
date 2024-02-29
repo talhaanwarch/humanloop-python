@@ -31,3 +31,5 @@ class ToolResponse(BaseModel):
 
     # The origin of the tool
     source: typing.Optional[str] = Field(None, alias='source')
+    class Config:
+        arbitrary_types_allowed = True

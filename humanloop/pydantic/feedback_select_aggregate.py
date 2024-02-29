@@ -25,3 +25,5 @@ class FeedbackSelectAggregate(BaseModel):
 
     # The total number of feedbacks provided.
     total: int = Field(alias='total')
+    class Config:
+        arbitrary_types_allowed = True

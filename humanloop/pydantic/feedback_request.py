@@ -35,3 +35,5 @@ class FeedbackRequest(BaseModel):
 
     # If true, the value for this feedback is unset.
     unset: typing.Optional[bool] = Field(None, alias='unset')
+    class Config:
+        arbitrary_types_allowed = True

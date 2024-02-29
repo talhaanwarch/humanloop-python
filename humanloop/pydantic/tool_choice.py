@@ -22,3 +22,5 @@ class ToolChoice(BaseModel):
     type: ToolType = Field(alias='type')
 
     function: FunctionToolChoice = Field(alias='function')
+    class Config:
+        arbitrary_types_allowed = True

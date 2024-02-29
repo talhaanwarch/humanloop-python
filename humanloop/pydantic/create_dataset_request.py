@@ -22,3 +22,5 @@ class CreateDatasetRequest(BaseModel):
 
     # The name of the dataset.
     name: str = Field(alias='name')
+    class Config:
+        arbitrary_types_allowed = True

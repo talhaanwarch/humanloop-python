@@ -30,3 +30,5 @@ class DatasetResponse(BaseModel):
     updated_at: datetime = Field(alias='updated_at')
 
     description: typing.Optional[str] = Field(None, alias='description')
+    class Config:
+        arbitrary_types_allowed = True

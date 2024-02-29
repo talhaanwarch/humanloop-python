@@ -19,3 +19,5 @@ from pydantic import BaseModel, Field, RootModel
 class ProjectInputResponse(BaseModel):
     # Type of input.
     name: str = Field(alias='name')
+    class Config:
+        arbitrary_types_allowed = True

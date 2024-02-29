@@ -35,3 +35,5 @@ class CreateEvaluationRequest(BaseModel):
 
     # Whether the log generations for this evaluation should be performed by Humanloop. If `False`, the log generations should be submitted by the user via the API.
     hl_generated: typing.Optional[bool] = Field(None, alias='hl_generated')
+    class Config:
+        arbitrary_types_allowed = True

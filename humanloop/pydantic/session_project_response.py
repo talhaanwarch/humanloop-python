@@ -21,3 +21,5 @@ class SessionProjectResponse(BaseModel):
     id: str = Field(alias='id')
 
     name: str = Field(alias='name')
+    class Config:
+        arbitrary_types_allowed = True

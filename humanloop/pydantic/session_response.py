@@ -39,3 +39,5 @@ class SessionResponse(BaseModel):
 
     # Output for the last datapoint in the session.
     last_output: typing.Optional[str] = Field(None, alias='last_output')
+    class Config:
+        arbitrary_types_allowed = True

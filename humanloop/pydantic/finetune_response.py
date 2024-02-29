@@ -51,3 +51,5 @@ class FinetuneResponse(BaseModel):
 
     # Summary stats about the data used for finetuning.
     data_summary: typing.Optional[typing.Dict[str, typing.Union[bool, date, datetime, dict, float, int, list, str, None]]] = Field(None, alias='data_summary')
+    class Config:
+        arbitrary_types_allowed = True

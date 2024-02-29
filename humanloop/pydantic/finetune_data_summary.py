@@ -35,3 +35,5 @@ class FinetuneDataSummary(BaseModel):
     dataset_name: str = Field(alias='dataset_name')
 
     dataset_id: str = Field(alias='dataset_id')
+    class Config:
+        arbitrary_types_allowed = True

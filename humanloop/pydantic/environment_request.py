@@ -22,3 +22,5 @@ class EnvironmentRequest(BaseModel):
 
     # The environment name.
     name: typing.Optional[str] = Field(None, alias='name')
+    class Config:
+        arbitrary_types_allowed = True

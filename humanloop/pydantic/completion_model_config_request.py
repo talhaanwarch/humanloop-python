@@ -77,3 +77,5 @@ class CompletionModelConfigRequest(BaseModel):
 
     # The suffix that comes after a completion of inserted text. Useful for completions that act like inserts.
     suffix: typing.Optional[str] = Field(None, alias='suffix')
+    class Config:
+        arbitrary_types_allowed = True

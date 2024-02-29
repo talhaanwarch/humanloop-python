@@ -22,3 +22,5 @@ class UpdateDatasetRequest(BaseModel):
 
     # The name of the dataset.
     name: typing.Optional[str] = Field(None, alias='name')
+    class Config:
+        arbitrary_types_allowed = True

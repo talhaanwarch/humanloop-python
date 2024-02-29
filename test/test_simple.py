@@ -228,6 +228,27 @@ async def test_chat():
     assert response.data[0].id is not None
 
 @pytest.mark.asyncio
+async def test_model_configs_register():
+    humanloop = Humanloop(
+        host="https://neostaging.humanloop.ml/v4",
+        api_key=os.environ["HUMANLOOP_API_KEY"],
+        openai_api_key=os.environ["OPENAI_API_KEY"],
+    )
+    response = humanloop.model_configs.register(
+        project="project_id",
+        model="gpt-4",
+        name="Entity extractor v0",
+        chat_template=[
+            {
+                "role": "system",
+                "content": "You are a helpful assistant. Read the user's message and "
+                "extract any features or issues mentioned in json format.",
+            }
+        ],
+    )
+    assert response is not None
+
+@pytest.mark.asyncio
 async def test_complete_stream():
     humanloop = Humanloop(
         host="https://neostaging.humanloop.ml/v4",

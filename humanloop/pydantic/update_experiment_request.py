@@ -29,3 +29,5 @@ class UpdateExperimentRequest(BaseModel):
     config_ids_to_register: typing.Optional[UpdateExperimentRequestConfigIdsToRegister] = Field(None, alias='config_ids_to_register')
 
     config_ids_to_deregister: typing.Optional[UpdateExperimentRequestConfigIdsToDeregister] = Field(None, alias='config_ids_to_deregister')
+    class Config:
+        arbitrary_types_allowed = True

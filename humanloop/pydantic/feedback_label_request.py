@@ -21,3 +21,5 @@ class FeedbackLabelRequest(BaseModel):
     value: str = Field(alias='value')
 
     sentiment: typing.Optional[LabelSentiment] = Field(None, alias='sentiment')
+    class Config:
+        arbitrary_types_allowed = True

@@ -19,3 +19,5 @@ from humanloop.pydantic.create_datapoints_by_logs_request_log_ids import CreateD
 
 class CreateDatapointsByLogsRequest(BaseModel):
     log_ids: CreateDatapointsByLogsRequestLogIds = Field(alias='log_ids')
+    class Config:
+        arbitrary_types_allowed = True

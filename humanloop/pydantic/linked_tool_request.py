@@ -31,3 +31,5 @@ class LinkedToolRequest(BaseModel):
 
     # The name of the linked tool.
     name: typing.Optional[str] = Field(None, alias='name')
+    class Config:
+        arbitrary_types_allowed = True

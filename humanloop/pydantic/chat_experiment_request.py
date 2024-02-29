@@ -86,3 +86,5 @@ class ChatExperimentRequest(BaseModel):
 
     # The format of the response. Only type json_object is currently supported for chat.
     response_format: typing.Optional[ResponseFormat] = Field(None, alias='response_format')
+    class Config:
+        arbitrary_types_allowed = True

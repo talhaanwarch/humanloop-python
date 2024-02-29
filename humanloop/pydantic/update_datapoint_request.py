@@ -26,3 +26,5 @@ class UpdateDatapointRequest(BaseModel):
     messages: typing.Optional[typing.List[ChatMessageWithToolCall]] = Field(None, alias='messages')
 
     target: typing.Optional[UpdateDatapointRequestTarget] = Field(None, alias='target')
+    class Config:
+        arbitrary_types_allowed = True
