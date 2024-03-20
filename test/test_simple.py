@@ -16,6 +16,7 @@ from unittest.mock import MagicMock, call
 
 from humanloop import Humanloop
 from humanloop.exceptions import MissingRequiredParametersError
+from humanloop.client_custom import _parse_sse_chunk
 
 import os
 
@@ -58,6 +59,12 @@ class TestSimple(unittest.TestCase):
                 }
             ],
         )
+
+    def test_parse_sse_chunk(self):
+        payload = '{"username": "phoenix", "time": "01:23:45", "text": "Hey hey hey. Here is some cool data: Venus is the only planet to spin clockwise!"}'
+        data = ('data: ' + payload).encode("utf-8")
+        parsed = _parse_sse_chunk(data)
+        self.assertEqual(parsed, payload)
 
     def test_log_delete(self):
         response = self.humanloop.logs.delete(id=["test"])

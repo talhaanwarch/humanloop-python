@@ -171,7 +171,8 @@ class ClientCustom:
 
 def _parse_sse_chunk(chunk: bytes):
     """Parse a single Server-Sent Event byte chunk (e.g. "data: ....") and return the data (e.g. "....") as a string"""
-    decoded = chunk.decode("utf-8")
-    if "data: " not in decoded:
+    decoded = chunk.decode("utf-8").strip()
+    prefix = "data: "
+    if not decoded.startswith(prefix):
         return None
-    return decoded.split("data: ")[1].strip()
+    return decoded[len(prefix):].strip()
