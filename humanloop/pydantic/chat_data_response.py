@@ -13,7 +13,7 @@ from datetime import datetime, date
 import typing
 from enum import Enum
 from typing_extensions import TypedDict, Literal, TYPE_CHECKING
-from pydantic import BaseModel, Field, RootModel
+from pydantic import BaseModel, Field, RootModel, ConfigDict
 
 from humanloop.pydantic.chat_message_with_tool_call import ChatMessageWithToolCall
 from humanloop.pydantic.function_tool import FunctionTool
@@ -51,10 +51,14 @@ class ChatDataResponse(BaseModel):
     # The messages passed to the to provider chat endpoint.
     messages: typing.Optional[typing.List[ChatMessageWithToolCall]] = Field(None, alias='messages')
 
+    # WARNING: This property is deprecated
     # Deprecated: Please use tool_calls field within the output_message.JSON definition of the tool to call and the corresponding argument values. Will be populated when finish_reason='tool_call'.
     tool_call: typing.Optional[FunctionTool] = Field(None, alias='tool_call')
 
     # Deprecated: Please use tool_calls field within the output_message.JSON definition of the tools to call and the corresponding argument values. Will be populated when finish_reason='tool_call'.
     tool_calls: typing.Optional[typing.List[ToolCall]] = Field(None, alias='tool_calls')
-    class Config:
-        arbitrary_types_allowed = True
+
+    model_config = ConfigDict(
+        protected_namespaces=(),
+        arbitrary_types_allowed=True
+    )

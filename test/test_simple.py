@@ -36,6 +36,56 @@ class TestSimple(unittest.TestCase):
     def tearDown(self):
         pass
 
+    def test_deserialize_and_register(self):
+        prompt = """
+        ---
+        model: gpt-3.5-turbo-16k
+        temperature: 0.0
+        max_tokens: -1
+        top_p: 1.0
+        presence_penalty: 0.0
+        frequency_penalty: 0.0
+        provider: openai
+        endpoint: chat
+        tools: []
+        ---
+
+        <system>
+        You are a helpful assistant.
+        </system>
+
+        <user>
+        Hello there!
+        </user>
+        """
+        result = self.humanloop.model_configs.deserialize(prompt)
+        model_config = result.model_dump()
+        PROJECT_NAME = "test"
+        PROJECT_ID = "test"
+        model_config["name"] = PROJECT_NAME
+        for key in [
+            "id",
+            "tool_configs",
+            "tools",
+            "type",
+        ]:
+            model_config.pop(key)
+
+        is_chat = model_config["endpoint"] == "chat"
+        if is_chat:
+            for template_message in model_config["chat_template"]:
+                # THIS SHOULD NOT BE NECESSARY
+                # for k in ["tool_call"]:
+                #     template_message.pop(k)
+                pass
+        else:
+            for key in ["chat_template"]:
+                model_config.pop(key)
+
+        project_config_response = self.humanloop.model_configs.register(
+            project_id=PROJECT_ID, **model_config
+        )
+
     @pytest.mark.skip(reason="moving target so not a consistent test")
     def test_complete_arguments(self):
         # assert that "self.humanloop.generate()" throws a "MissingRequiredParametersError" error

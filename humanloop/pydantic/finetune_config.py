@@ -13,7 +13,7 @@ from datetime import datetime, date
 import typing
 from enum import Enum
 from typing_extensions import TypedDict, Literal, TYPE_CHECKING
-from pydantic import BaseModel, Field, RootModel
+from pydantic import BaseModel, Field, RootModel, ConfigDict
 
 from humanloop.pydantic.model_providers import ModelProviders
 
@@ -26,5 +26,8 @@ class FinetuneConfig(BaseModel):
 
     # The company who is hosting the target model.This is used only if an existing experiment_id or model_config_id are not provided.
     provider: typing.Optional[ModelProviders] = Field(None, alias='provider')
-    class Config:
-        arbitrary_types_allowed = True
+
+    model_config = ConfigDict(
+        protected_namespaces=(),
+        arbitrary_types_allowed=True
+    )

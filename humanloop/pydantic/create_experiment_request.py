@@ -13,7 +13,7 @@ from datetime import datetime, date
 import typing
 from enum import Enum
 from typing_extensions import TypedDict, Literal, TYPE_CHECKING
-from pydantic import BaseModel, Field, RootModel
+from pydantic import BaseModel, Field, RootModel, ConfigDict
 
 from humanloop.pydantic.create_experiment_request_config_ids import CreateExperimentRequestConfigIds
 from humanloop.pydantic.positive_label import PositiveLabel
@@ -29,5 +29,8 @@ class CreateExperimentRequest(BaseModel):
 
     # Whether to set the created project as the project's active experiment.
     set_active: typing.Optional[bool] = Field(None, alias='set_active')
-    class Config:
-        arbitrary_types_allowed = True
+
+    model_config = ConfigDict(
+        protected_namespaces=(),
+        arbitrary_types_allowed=True
+    )

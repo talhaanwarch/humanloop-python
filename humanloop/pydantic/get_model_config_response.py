@@ -13,7 +13,7 @@ from datetime import datetime, date
 import typing
 from enum import Enum
 from typing_extensions import TypedDict, Literal, TYPE_CHECKING
-from pydantic import BaseModel, Field, RootModel
+from pydantic import BaseModel, Field, RootModel, ConfigDict
 
 from humanloop.pydantic.config_response import ConfigResponse
 from humanloop.pydantic.model_config_evaluator_aggregate_response import ModelConfigEvaluatorAggregateResponse
@@ -51,5 +51,8 @@ class GetModelConfigResponse(BaseModel):
 
     # ID of environment to reference in subsequent log calls.
     environment_id: typing.Optional[str] = Field(None, alias='environment_id')
-    class Config:
-        arbitrary_types_allowed = True
+
+    model_config = ConfigDict(
+        protected_namespaces=(),
+        arbitrary_types_allowed=True
+    )

@@ -13,7 +13,7 @@ from datetime import datetime, date
 import typing
 from enum import Enum
 from typing_extensions import TypedDict, Literal, TYPE_CHECKING
-from pydantic import BaseModel, Field, RootModel
+from pydantic import BaseModel, Field, RootModel, ConfigDict
 
 
 class ImageUrl(BaseModel):
@@ -22,5 +22,8 @@ class ImageUrl(BaseModel):
 
     # Specify the detail level of the image provided to the model. For more details see: https://platform.openai.com/docs/guides/vision/low-or-high-fidelity-image-understanding
     detail: typing.Optional[Literal["high", "low", "auto"]] = Field(None, alias='detail')
-    class Config:
-        arbitrary_types_allowed = True
+
+    model_config = ConfigDict(
+        protected_namespaces=(),
+        arbitrary_types_allowed=True
+    )

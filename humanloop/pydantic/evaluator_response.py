@@ -13,7 +13,7 @@ from datetime import datetime, date
 import typing
 from enum import Enum
 from typing_extensions import TypedDict, Literal, TYPE_CHECKING
-from pydantic import BaseModel, Field, RootModel
+from pydantic import BaseModel, Field, RootModel, ConfigDict
 
 from humanloop.pydantic.evaluator_arguments_type import EvaluatorArgumentsType
 from humanloop.pydantic.evaluator_return_type_enum import EvaluatorReturnTypeEnum
@@ -53,5 +53,8 @@ class EvaluatorResponse(BaseModel):
 
     # The project where the evaluator logs are stored.
     logging_project: typing.Optional['ProjectResponse'] = Field(None, alias='logging_project')
-    class Config:
-        arbitrary_types_allowed = True
+
+    model_config = ConfigDict(
+        protected_namespaces=(),
+        arbitrary_types_allowed=True
+    )

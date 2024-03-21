@@ -13,7 +13,7 @@ from datetime import datetime, date
 import typing
 from enum import Enum
 from typing_extensions import TypedDict, Literal, TYPE_CHECKING
-from pydantic import BaseModel, Field, RootModel
+from pydantic import BaseModel, Field, RootModel, ConfigDict
 
 from humanloop.pydantic.finetune_config import FinetuneConfig
 from humanloop.pydantic.provider_api_keys import ProviderApiKeys
@@ -33,5 +33,8 @@ class FinetuneRequest(BaseModel):
 
     # API keys required by each provider to make API calls. The API keys provided here are not stored by Humanloop. If not specified here, Humanloop will fall back to the key saved to your organization.
     provider_api_keys: typing.Optional[ProviderApiKeys] = Field(None, alias='provider_api_keys')
-    class Config:
-        arbitrary_types_allowed = True
+
+    model_config = ConfigDict(
+        protected_namespaces=(),
+        arbitrary_types_allowed=True
+    )

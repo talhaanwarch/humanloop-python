@@ -73,6 +73,7 @@ class OptionalModelConfigResponse(TypedDict, total=False):
     # Messages prepended to the list of messages sent to the provider. These messages that will take your specified inputs to form your final request to the provider model. NB: Input variables within the template should be specified with syntax: {{INPUT_NAME}}.
     chat_template: typing.List[ChatMessageWithToolCall]
 
+    # WARNING: This property is deprecated
     # NB: Deprecated with tools field. Definition of tools shown to the model.
     tool_configs: typing.List[ToolConfigResponse]
 

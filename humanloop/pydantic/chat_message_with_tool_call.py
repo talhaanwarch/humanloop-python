@@ -13,10 +13,10 @@ from datetime import datetime, date
 import typing
 from enum import Enum
 from typing_extensions import TypedDict, Literal, TYPE_CHECKING
-from pydantic import BaseModel, Field, RootModel
+from pydantic import BaseModel, Field, RootModel, ConfigDict
 
 from humanloop.pydantic.chat_role import ChatRole
-from humanloop.pydantic.function_tool import FunctionTool
+from humanloop.pydantic.function_tool_nullable import FunctionToolNullable
 from humanloop.pydantic.image_chat_content import ImageChatContent
 from humanloop.pydantic.text_chat_content import TextChatContent
 from humanloop.pydantic.tool_call import ToolCall
@@ -37,7 +37,11 @@ class ChatMessageWithToolCall(BaseModel):
     # A list of tool calls requested by the assistant.
     tool_calls: typing.Optional[typing.Optional[typing.List[ToolCall]]] = Field(None, alias='tool_calls')
 
+    # WARNING: This property is deprecated
     # NB: Deprecated in favour of tool_calls. A tool call requested by the assistant.
-    tool_call: typing.Optional[FunctionTool] = Field(None, alias='tool_call')
-    class Config:
-        arbitrary_types_allowed = True
+    tool_call: typing.Optional[FunctionToolNullable] = Field(None, alias='tool_call')
+
+    model_config = ConfigDict(
+        protected_namespaces=(),
+        arbitrary_types_allowed=True
+    )

@@ -105,6 +105,7 @@ from humanloop.model.finetune_response import FinetuneResponse
 from humanloop.model.finetunes_list_all_for_project_response import FinetunesListAllForProjectResponse
 from humanloop.model.function_tool import FunctionTool
 from humanloop.model.function_tool_choice import FunctionToolChoice
+from humanloop.model.function_tool_nullable import FunctionToolNullable
 from humanloop.model.generic_config_response import GenericConfigResponse
 from humanloop.model.get_model_config_response import GetModelConfigResponse
 from humanloop.model.http_validation_error import HTTPValidationError

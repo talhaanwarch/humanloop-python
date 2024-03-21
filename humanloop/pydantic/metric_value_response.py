@@ -13,7 +13,7 @@ from datetime import datetime, date
 import typing
 from enum import Enum
 from typing_extensions import TypedDict, Literal, TYPE_CHECKING
-from pydantic import BaseModel, Field, RootModel
+from pydantic import BaseModel, Field, RootModel, ConfigDict
 
 
 class MetricValueResponse(BaseModel):
@@ -22,5 +22,8 @@ class MetricValueResponse(BaseModel):
     metric_name: str = Field(alias='metric_name')
 
     metric_value: typing.Union[int, float] = Field(alias='metric_value')
-    class Config:
-        arbitrary_types_allowed = True
+
+    model_config = ConfigDict(
+        protected_namespaces=(),
+        arbitrary_types_allowed=True
+    )

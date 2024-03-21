@@ -13,7 +13,7 @@ from datetime import datetime, date
 import typing
 from enum import Enum
 from typing_extensions import TypedDict, Literal, TYPE_CHECKING
-from pydantic import BaseModel, Field, RootModel
+from pydantic import BaseModel, Field, RootModel, ConfigDict
 
 
 ModelProviders = Literal["openai", "openai_azure", "ai21", "mock", "anthropic", "langchain", "cohere", "replicate", "google"]

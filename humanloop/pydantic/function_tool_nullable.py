@@ -15,10 +15,11 @@ from enum import Enum
 from typing_extensions import TypedDict, Literal, TYPE_CHECKING
 from pydantic import BaseModel, Field, RootModel, ConfigDict
 
-from humanloop.pydantic.validation_error import ValidationError
 
-class HTTPValidationError(BaseModel):
-    detail: typing.Optional[typing.List[ValidationError]] = Field(None, alias='detail')
+class FunctionToolNullable(BaseModel):
+    name: str = Field(alias='name')
+
+    arguments: typing.Optional[str] = Field(None, alias='arguments')
 
     model_config = ConfigDict(
         protected_namespaces=(),

@@ -13,7 +13,7 @@ from datetime import datetime, date
 import typing
 from enum import Enum
 from typing_extensions import TypedDict, Literal, TYPE_CHECKING
-from pydantic import BaseModel, Field, RootModel
+from pydantic import BaseModel, Field, RootModel, ConfigDict
 
 from humanloop.pydantic.model_endpoints import ModelEndpoints
 from humanloop.pydantic.model_providers import ModelProviders
@@ -64,5 +64,8 @@ class ModelConfigCompletionRequest(BaseModel):
 
     # The provider model endpoint used.
     endpoint: typing.Optional[ModelEndpoints] = Field(None, alias='endpoint')
-    class Config:
-        arbitrary_types_allowed = True
+
+    model_config = ConfigDict(
+        protected_namespaces=(),
+        arbitrary_types_allowed=True
+    )

@@ -13,7 +13,7 @@ from datetime import datetime, date
 import typing
 from enum import Enum
 from typing_extensions import TypedDict, Literal, TYPE_CHECKING
-from pydantic import BaseModel, Field, RootModel
+from pydantic import BaseModel, Field, RootModel, ConfigDict
 
 from humanloop.pydantic.model_config_completion_request import ModelConfigCompletionRequest
 from humanloop.pydantic.provider_api_keys import ProviderApiKeys
@@ -67,6 +67,7 @@ class CompletionRequest(BaseModel):
     # End-user ID passed through to provider call.
     user: typing.Optional[str] = Field(None, alias='user')
 
+    # WARNING: This property is deprecated
     # Deprecated field: the seed is instead set as part of the request.config object.
     seed: typing.Optional[int] = Field(None, alias='seed')
 
@@ -78,5 +79,8 @@ class CompletionRequest(BaseModel):
 
     # The suffix that comes after a completion of inserted text. Useful for completions that act like inserts.
     suffix: typing.Optional[str] = Field(None, alias='suffix')
-    class Config:
-        arbitrary_types_allowed = True
+
+    model_config = ConfigDict(
+        protected_namespaces=(),
+        arbitrary_types_allowed=True
+    )

@@ -66,6 +66,7 @@ class OptionalCompletionModelConfigRequest(TypedDict, total=False):
     # End-user ID passed through to provider call.
     user: str
 
+    # WARNING: This property is deprecated
     # Deprecated field: the seed is instead set as part of the request.config object.
     seed: int
 

@@ -13,7 +13,7 @@ from datetime import datetime, date
 import typing
 from enum import Enum
 from typing_extensions import TypedDict, Literal, TYPE_CHECKING
-from pydantic import BaseModel, Field, RootModel
+from pydantic import BaseModel, Field, RootModel, ConfigDict
 
 from humanloop.pydantic.feedback_multi_select_aggregate import FeedbackMultiSelectAggregate
 from humanloop.pydantic.feedback_number_aggregate import FeedbackNumberAggregate

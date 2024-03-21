@@ -13,7 +13,7 @@ from datetime import datetime, date
 import typing
 from enum import Enum
 from typing_extensions import TypedDict, Literal, TYPE_CHECKING
-from pydantic import BaseModel, Field, RootModel
+from pydantic import BaseModel, Field, RootModel, ConfigDict
 
 from humanloop.pydantic.chat_message_with_tool_call import ChatMessageWithToolCall
 from humanloop.pydantic.provider_api_keys import ProviderApiKeys
@@ -69,6 +69,7 @@ class ChatDeployedRequest(BaseModel):
     # End-user ID passed through to provider call.
     user: typing.Optional[str] = Field(None, alias='user')
 
+    # WARNING: This property is deprecated
     # Deprecated field: the seed is instead set as part of the request.config object.
     seed: typing.Optional[int] = Field(None, alias='seed')
 
@@ -78,6 +79,7 @@ class ChatDeployedRequest(BaseModel):
     # Controls how the model uses tools. The following options are supported: 'none' forces the model to not call a tool; the default when no tools are provided as part of the model config. 'auto' the model can decide to call one of the provided tools; the default when tools are provided as part of the model config. Providing {'type': 'function', 'function': {name': <TOOL_NAME>}} forces the model to use the named function.
     tool_choice: typing.Optional[typing.Union[str, str, ToolChoice]] = Field(None, alias='tool_choice')
 
+    # WARNING: This property is deprecated
     # NB: Deprecated with new tool_choice. Controls how the model uses tools. The following options are supported: 'none' forces the model to not call a tool; the default when no tools are provided as part of the model config. 'auto' the model can decide to call one of the provided tools; the default when tools are provided as part of the model config. Providing {'name': <TOOL_NAME>} forces the model to use the provided tool of the same name.
     tool_call: typing.Optional[typing.Union[str, typing.Dict[str, str]]] = Field(None, alias='tool_call')
 
@@ -86,5 +88,8 @@ class ChatDeployedRequest(BaseModel):
 
     # The environment name used to create a chat response. If not specified, the default environment will be used.
     environment: typing.Optional[str] = Field(None, alias='environment')
-    class Config:
-        arbitrary_types_allowed = True
+
+    model_config = ConfigDict(
+        protected_namespaces=(),
+        arbitrary_types_allowed=True
+    )

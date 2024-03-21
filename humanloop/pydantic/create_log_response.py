@@ -13,7 +13,7 @@ from datetime import datetime, date
 import typing
 from enum import Enum
 from typing_extensions import TypedDict, Literal, TYPE_CHECKING
-from pydantic import BaseModel, Field, RootModel
+from pydantic import BaseModel, Field, RootModel, ConfigDict
 
 
 class CreateLogResponse(BaseModel):
@@ -25,5 +25,8 @@ class CreateLogResponse(BaseModel):
 
     # String ID of session the datapoint belongs to. Populated only if the datapoint was logged with `session_id` or `session_reference_id`, and is `None` otherwise. Starts with `sesh_`.
     session_id: typing.Optional[str] = Field(None, alias='session_id')
-    class Config:
-        arbitrary_types_allowed = True
+
+    model_config = ConfigDict(
+        protected_namespaces=(),
+        arbitrary_types_allowed=True
+    )

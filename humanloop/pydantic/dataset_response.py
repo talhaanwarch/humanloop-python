@@ -13,7 +13,7 @@ from datetime import datetime, date
 import typing
 from enum import Enum
 from typing_extensions import TypedDict, Literal, TYPE_CHECKING
-from pydantic import BaseModel, Field, RootModel
+from pydantic import BaseModel, Field, RootModel, ConfigDict
 
 
 class DatasetResponse(BaseModel):
@@ -30,5 +30,8 @@ class DatasetResponse(BaseModel):
     updated_at: datetime = Field(alias='updated_at')
 
     description: typing.Optional[str] = Field(None, alias='description')
-    class Config:
-        arbitrary_types_allowed = True
+
+    model_config = ConfigDict(
+        protected_namespaces=(),
+        arbitrary_types_allowed=True
+    )

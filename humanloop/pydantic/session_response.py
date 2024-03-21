@@ -13,7 +13,7 @@ from datetime import datetime, date
 import typing
 from enum import Enum
 from typing_extensions import TypedDict, Literal, TYPE_CHECKING
-from pydantic import BaseModel, Field, RootModel
+from pydantic import BaseModel, Field, RootModel, ConfigDict
 
 from humanloop.pydantic.session_project_response import SessionProjectResponse
 
@@ -39,5 +39,8 @@ class SessionResponse(BaseModel):
 
     # Output for the last datapoint in the session.
     last_output: typing.Optional[str] = Field(None, alias='last_output')
-    class Config:
-        arbitrary_types_allowed = True
+
+    model_config = ConfigDict(
+        protected_namespaces=(),
+        arbitrary_types_allowed=True
+    )

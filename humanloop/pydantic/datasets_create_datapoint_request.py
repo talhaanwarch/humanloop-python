@@ -13,7 +13,7 @@ from datetime import datetime, date
 import typing
 from enum import Enum
 from typing_extensions import TypedDict, Literal, TYPE_CHECKING
-from pydantic import BaseModel, Field, RootModel
+from pydantic import BaseModel, Field, RootModel, ConfigDict
 
 from humanloop.pydantic.create_datapoint_request import CreateDatapointRequest
 from humanloop.pydantic.create_datapoints_by_logs_request import CreateDatapointsByLogsRequest

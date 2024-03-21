@@ -207,8 +207,8 @@ class ChatMessageWithToolCall(
                     )
         
             @staticmethod
-            def tool_call() -> typing.Type['FunctionTool']:
-                return FunctionTool
+            def tool_call() -> typing.Type['FunctionToolNullable']:
+                return FunctionToolNullable
             __annotations__ = {
                 "role": role,
                 "content": content,
@@ -236,7 +236,7 @@ class ChatMessageWithToolCall(
     def __getitem__(self, name: typing_extensions.Literal["tool_calls"]) -> MetaOapg.properties.tool_calls: ...
     
     @typing.overload
-    def __getitem__(self, name: typing_extensions.Literal["tool_call"]) -> 'FunctionTool': ...
+    def __getitem__(self, name: typing_extensions.Literal["tool_call"]) -> 'FunctionToolNullable': ...
     
     @typing.overload
     def __getitem__(self, name: str) -> schemas.UnsetAnyTypeSchema: ...
@@ -262,7 +262,7 @@ class ChatMessageWithToolCall(
     def get_item_oapg(self, name: typing_extensions.Literal["tool_calls"]) -> typing.Union[MetaOapg.properties.tool_calls, schemas.Unset]: ...
     
     @typing.overload
-    def get_item_oapg(self, name: typing_extensions.Literal["tool_call"]) -> typing.Union['FunctionTool', schemas.Unset]: ...
+    def get_item_oapg(self, name: typing_extensions.Literal["tool_call"]) -> typing.Union['FunctionToolNullable', schemas.Unset]: ...
     
     @typing.overload
     def get_item_oapg(self, name: str) -> typing.Union[schemas.UnsetAnyTypeSchema, schemas.Unset]: ...
@@ -279,7 +279,7 @@ class ChatMessageWithToolCall(
         name: typing.Union[MetaOapg.properties.name, None, str, schemas.Unset] = schemas.unset,
         tool_call_id: typing.Union[MetaOapg.properties.tool_call_id, None, str, schemas.Unset] = schemas.unset,
         tool_calls: typing.Union[MetaOapg.properties.tool_calls, list, tuple, None, schemas.Unset] = schemas.unset,
-        tool_call: typing.Union['FunctionTool', schemas.Unset] = schemas.unset,
+        tool_call: typing.Union['FunctionToolNullable', schemas.Unset] = schemas.unset,
         _configuration: typing.Optional[schemas.Configuration] = None,
         **kwargs: typing.Union[schemas.AnyTypeSchema, dict, frozendict.frozendict, str, date, datetime, uuid.UUID, int, float, decimal.Decimal, None, list, tuple, bytes],
     ) -> 'ChatMessageWithToolCall':
@@ -297,7 +297,7 @@ class ChatMessageWithToolCall(
         )
 
 from humanloop.model.chat_role import ChatRole
-from humanloop.model.function_tool import FunctionTool
+from humanloop.model.function_tool_nullable import FunctionToolNullable
 from humanloop.model.image_chat_content import ImageChatContent
 from humanloop.model.text_chat_content import TextChatContent
 from humanloop.model.tool_call import ToolCall

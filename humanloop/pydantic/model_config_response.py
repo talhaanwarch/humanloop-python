@@ -13,7 +13,7 @@ from datetime import datetime, date
 import typing
 from enum import Enum
 from typing_extensions import TypedDict, Literal, TYPE_CHECKING
-from pydantic import BaseModel, Field, RootModel
+from pydantic import BaseModel, Field, RootModel, ConfigDict
 
 from humanloop.pydantic.chat_message_with_tool_call import ChatMessageWithToolCall
 from humanloop.pydantic.model_endpoints import ModelEndpoints
@@ -73,6 +73,7 @@ class ModelConfigResponse(BaseModel):
     # Messages prepended to the list of messages sent to the provider. These messages that will take your specified inputs to form your final request to the provider model. NB: Input variables within the template should be specified with syntax: {{INPUT_NAME}}.
     chat_template: typing.Optional[typing.List[ChatMessageWithToolCall]] = Field(None, alias='chat_template')
 
+    # WARNING: This property is deprecated
     # NB: Deprecated with tools field. Definition of tools shown to the model.
     tool_configs: typing.Optional[typing.List[ToolConfigResponse]] = Field(None, alias='tool_configs')
 
@@ -81,5 +82,8 @@ class ModelConfigResponse(BaseModel):
 
     # The provider model endpoint used.
     endpoint: typing.Optional[ModelEndpoints] = Field(None, alias='endpoint')
-    class Config:
-        arbitrary_types_allowed = True
+
+    model_config = ConfigDict(
+        protected_namespaces=(),
+        arbitrary_types_allowed=True
+    )

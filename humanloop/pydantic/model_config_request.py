@@ -13,7 +13,7 @@ from datetime import datetime, date
 import typing
 from enum import Enum
 from typing_extensions import TypedDict, Literal, TYPE_CHECKING
-from pydantic import BaseModel, Field, RootModel
+from pydantic import BaseModel, Field, RootModel, ConfigDict
 
 from humanloop.pydantic.chat_message_with_tool_call import ChatMessageWithToolCall
 from humanloop.pydantic.model_config_request_tools import ModelConfigRequestTools
@@ -73,5 +73,8 @@ class ModelConfigRequest(BaseModel):
     tools: typing.Optional[ModelConfigRequestTools] = Field(None, alias='tools')
 
     type: typing.Optional[Literal["model"]] = Field(None, alias='type')
-    class Config:
-        arbitrary_types_allowed = True
+
+    model_config = ConfigDict(
+        protected_namespaces=(),
+        arbitrary_types_allowed=True
+    )

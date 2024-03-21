@@ -13,7 +13,7 @@ from datetime import datetime, date
 import typing
 from enum import Enum
 from typing_extensions import TypedDict, Literal, TYPE_CHECKING
-from pydantic import BaseModel, Field, RootModel
+from pydantic import BaseModel, Field, RootModel, ConfigDict
 
 from humanloop.pydantic.create_evaluation_request_evaluator_ids import CreateEvaluationRequestEvaluatorIds
 from humanloop.pydantic.provider_api_keys import ProviderApiKeys
@@ -35,5 +35,8 @@ class CreateEvaluationRequest(BaseModel):
 
     # Whether the log generations for this evaluation should be performed by Humanloop. If `False`, the log generations should be submitted by the user via the API.
     hl_generated: typing.Optional[bool] = Field(None, alias='hl_generated')
-    class Config:
-        arbitrary_types_allowed = True
+
+    model_config = ConfigDict(
+        protected_namespaces=(),
+        arbitrary_types_allowed=True
+    )

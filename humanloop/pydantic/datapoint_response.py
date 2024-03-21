@@ -13,7 +13,7 @@ from datetime import datetime, date
 import typing
 from enum import Enum
 from typing_extensions import TypedDict, Literal, TYPE_CHECKING
-from pydantic import BaseModel, Field, RootModel
+from pydantic import BaseModel, Field, RootModel, ConfigDict
 
 from humanloop.pydantic.chat_message_with_tool_call import ChatMessageWithToolCall
 from humanloop.pydantic.datapoint_response_inputs import DatapointResponseInputs
@@ -35,5 +35,8 @@ class DatapointResponse(BaseModel):
     target: typing.Optional[DatapointResponseTarget] = Field(None, alias='target')
 
     source_project_data_id: typing.Optional[str] = Field(None, alias='source_project_data_id')
-    class Config:
-        arbitrary_types_allowed = True
+
+    model_config = ConfigDict(
+        protected_namespaces=(),
+        arbitrary_types_allowed=True
+    )

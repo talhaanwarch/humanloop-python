@@ -15,7 +15,7 @@ from enum import Enum
 from typing_extensions import TypedDict, Literal, TYPE_CHECKING
 
 from humanloop.type.chat_role import ChatRole
-from humanloop.type.function_tool import FunctionTool
+from humanloop.type.function_tool_nullable import FunctionToolNullable
 from humanloop.type.image_chat_content import ImageChatContent
 from humanloop.type.text_chat_content import TextChatContent
 from humanloop.type.tool_call import ToolCall
@@ -37,8 +37,9 @@ class OptionalChatMessageWithToolCall(TypedDict, total=False):
     # A list of tool calls requested by the assistant.
     tool_calls: typing.Optional[typing.List[ToolCall]]
 
+    # WARNING: This property is deprecated
     # NB: Deprecated in favour of tool_calls. A tool call requested by the assistant.
-    tool_call: FunctionTool
+    tool_call: typing.Optional[FunctionToolNullable]
 
 class ChatMessageWithToolCall(RequiredChatMessageWithToolCall, OptionalChatMessageWithToolCall):
     pass
