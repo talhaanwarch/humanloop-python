@@ -5,7 +5,7 @@
 # Humanloop<a id="humanloop"></a>
 
 
-[![PyPI](https://img.shields.io/badge/PyPI-v0.7.18-blue)](https://pypi.org/project/humanloop/0.7.18)
+[![PyPI](https://img.shields.io/badge/PyPI-v0.7.19-blue)](https://pypi.org/project/humanloop/0.7.19)
 [![README.md](https://img.shields.io/badge/README-Click%20Here-green)](https://github.com/humanloop/humanloop-python#readme)
 
 </div>
@@ -133,7 +133,7 @@ Python >=3.7
 ## Installation<a id="installation"></a>
 
 ```sh
-pip install humanloop==0.7.18
+pip install humanloop==0.7.19
 ```
 
 ## Getting Started<a id="getting-started"></a>
@@ -317,8 +317,6 @@ humanloop = Humanloop(
     openai_api_key="OPENAI_API_KEY",
     openai_azure_api_key="OPENAI_AZURE_API_KEY",
     openai_azure_endpoint_api_key="OPENAI_AZURE_ENDPOINT_API_KEY",
-    ai21_api_key="AI21_API_KEY",
-    mock_api_key="MOCK_API_KEY",
     anthropic_api_key="ANTHROPIC_API_KEY",
     cohere_api_key="COHERE_API_KEY",
     api_key="YOUR_API_KEY",

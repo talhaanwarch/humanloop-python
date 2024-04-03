@@ -111,8 +111,6 @@ conf = humanloop.Configuration(
                  openai_api_key=None,
                  openai_azure_api_key=None,
                  openai_azure_endpoint_api_key=None,
-                 ai21_api_key=None,
-                 mock_api_key=None,
                  anthropic_api_key=None,
                  cohere_api_key=None,
                  disabled_client_side_validations="",
@@ -131,8 +129,6 @@ conf = humanloop.Configuration(
         self.openai_api_key = openai_api_key
         self.openai_azure_api_key = openai_azure_api_key
         self.openai_azure_endpoint_api_key = openai_azure_endpoint_api_key
-        self.ai21_api_key = ai21_api_key
-        self.mock_api_key = mock_api_key
         self.anthropic_api_key = anthropic_api_key
         self.cohere_api_key = cohere_api_key
         """Client State
@@ -423,7 +419,7 @@ conf = humanloop.Configuration(
                "OS: {env}\n"\
                "Python Version: {pyversion}\n"\
                "Version of the API: 4.0.1\n"\
-               "SDK Package Version: 0.7.18".\
+               "SDK Package Version: 0.7.19".\
                format(env=sys.platform, pyversion=sys.version)
 
     def get_host_settings(self):

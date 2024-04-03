@@ -53,8 +53,4 @@ def request_before_hook(
         and configuration.openai_azure_endpoint_api_key is not None
     ):
         api_keys["openai_azure_endpoint"] = configuration.openai_azure_endpoint_api_key
-    if "ai21" not in api_keys and configuration.ai21_api_key is not None:
-        api_keys["ai21"] = configuration.ai21_api_key
-    if "mock" not in api_keys and configuration.mock_api_key is not None:
-        api_keys["mock"] = configuration.mock_api_key
     body["provider_api_keys"] = api_keys

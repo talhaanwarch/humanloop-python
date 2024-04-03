@@ -10,8 +10,6 @@ class RandomClass:
         openai_api_key = 'OPENAI_API_KEY',
         openai_azure_api_key = 'OPENAI_AZURE_API_KEY',
         openai_azure_endpoint_api_key = 'OPENAI_AZURE_ENDPOINT_API_KEY',
-        ai21_api_key = 'AI21_API_KEY',
-        mock_api_key = 'MOCK_API_KEY',
         anthropic_api_key = 'ANTHROPIC_API_KEY',
         cohere_api_key = 'COHERE_API_KEY',
     
